@@ -37,21 +37,10 @@
           })
 
           $('.nova-partida').click(function(){
-            var $this = $(this).parents('.ranking-row');
-            $('#jogador-visitante').val($('#username', $this).text());
-            $('#jogador-visitante-id').val($this.prop('id'));
-            $('#modal').fadeIn('fast')
-            $('#modal-bg').fadeIn('fast')
-            if($(window).width() <= 1024){
-              $('header, footer, #wrapper').hide();
-            }
-            return false
-          })
-
-          $('#ranking li').click(function(){
-            var $this = $(this);
+              var $this = $(this).parents('.ranking-row');
               $('#jogador-visitante').val($this.find('#username').text());
               $('#jogador-visitante-id').val($this.prop('id'));
+
               $.ajax({
                 url: 'teams/get_new_score_data/' + #{current_player.id} + '/' + $this.prop('id'),
                 success: function(data){
@@ -61,8 +50,13 @@
                   $('#game_player1_team_id').val(data.last_team_player1.id);
                   $('#game_player2_team_id').val(data.last_team_player2.id);
                   set_team_autocomplete(data.all_teams);
-                  $('#modal').fadeIn();
-                  $('#modal-bg').fadeIn();
+
+                  $('#modal').fadeIn('fast')
+                  $('#modal-bg').fadeIn('fast')
+                  if($(window).width() <= 1024){
+                    $('header, footer, #wrapper').hide();
+                  }
+
                 },
                 error: function(){
                   alert("Erro ao carregar os times");
