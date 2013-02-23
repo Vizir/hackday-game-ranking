@@ -51,11 +51,14 @@
               $.ajax({
                 url: 'teams/get_new_score_data/' + #{current_player.id} + '/' + $this.prop('id'),
                 success: function(data){
-                  $('#time-casa').val(data.last_team_player1.name);
-                  $('#time-visitante').val(data.last_team_player2.name);
-
-                  $('#game_player1_team_id').val(data.last_team_player1.id);
-                  $('#game_player2_team_id').val(data.last_team_player2.id);
+                  if(data.last_team_player1 != null){
+                    $('#time-casa').val(data.last_team_player1.name);
+                    $('#game_player1_team_id').val(data.last_team_player1.id);
+                  }
+                  if(data.last_team_player2 != null){
+                    $('#time-visitante').val(data.last_team_player2.name);
+                    $('#game_player2_team_id').val(data.last_team_player2.id);
+                  }
                   set_team_autocomplete(data.all_teams);
                   $('#modal').fadeIn();
                   $('#modal-bg').fadeIn();
@@ -101,7 +104,7 @@
           minLength: 0,
           source: teams,
           focus: function( event, ui ) {
-            $( "#project" ).val( ui.item.label );
+            $(this).val( ui.item.label );
             return false;
           },
           select: function( event, ui ) {
@@ -109,8 +112,7 @@
             $("#game_" + $(this).attr('name') + "_id").val(ui.item.value)
             return false;
           }
-        })
-        .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+        }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
           return $( "<li>" )
             .append( "<a>" + "<img src='"+ item.logo + "'>" + item.label + " </a>" )
             .appendTo( ul );
