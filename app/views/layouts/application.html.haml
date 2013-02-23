@@ -7,6 +7,8 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    %meta{:name=>"apple-mobile-web-app-capable", :content=>"yes"}/
+    %meta{:name=>"apple-mobile-web-app-status-bar-style", :content=>"black"}/
     %meta{:content => "", :name => "description"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     :javascript
@@ -35,19 +37,42 @@
           })
 
           $('.nova-partida').click(function(){
-            var $this = $(this).parents('.ranking-row');
-            $('#jogador-visitante').val($('#username', $this).text());
-            $('#jogador-visitante-id').val($this.prop('id'));
-            $('#modal').fadeIn()
-            $('#modal-bg').fadeIn()
-            $('header, footer, #wrapper').hide();
-            return false
+              var $this = $(this).parents('.ranking-row');
+              $('#jogador-visitante').val($this.find('#username').text());
+              $('#jogador-visitante-id').val($this.prop('id'));
+
+              $.ajax({
+                url: 'teams/get_new_score_data/' + #{current_player.try(:id)} + '/' + $this.prop('id'),
+                success: function(data){
+                  if(data.last_team_player1 != null){
+                    $('#time-casa').val(data.last_team_player1.name);
+                    $('#game_player1_team_id').val(data.last_team_player1.id);
+                  }
+                  if(data.last_team_player2 != null){
+                    $('#time-visitante').val(data.last_team_player2.name);
+                    $('#game_player2_team_id').val(data.last_team_player2.id);
+                  }
+                  set_team_autocomplete(data.all_teams);
+
+                  $('#modal').fadeIn('fast')
+                  $('#modal-bg').fadeIn('fast')
+                  if($(window).width() <= 1024){
+                    $('header, footer, #wrapper').hide();
+                  }
+
+                },
+                error: function(){
+                  alert("Erro ao carregar os times");
+                }
+              });
+              return false
           })
 
           $('#close').click(function(){
-              $('#modal').fadeOut()
-              $('#modal-bg').fadeOut()
-              $('header, footer, #wrapper').show();
+              $('#modal').fadeOut('fast')
+              $('#modal-bg').fadeOut('fast', function(){
+                $('header, footer, #wrapper').fadeIn('fast');            
+              })
               return false
           })
 
@@ -57,8 +82,8 @@
                   $('#timeline').fadeOut()
               } else {
                   $("#novo-ranking").html("Novo Ranking");
-                  $('#ranking').fadeIn()
-                  $('#timeline').fadeIn()
+                  $('#ranking').fadeIn('fast');
+                  $('#timeline').fadeIn('fast');
               }
           });
 
@@ -67,7 +92,31 @@
           if (navigator.userAgent.indexOf('Android') >= 0) {
             $('.input-numerico').attr('type', 'number');
           }
+
+
+
+
       });
+
+      function set_team_autocomplete(teams){
+        $( ".team_autocomplete" ).autocomplete({
+          minLength: 0,
+          source: teams,
+          focus: function( event, ui ) {
+            $(this).val( ui.item.label );
+            return false;
+          },
+          select: function( event, ui ) {
+            $(this).val( ui.item.label );
+            $("#game_" + $(this).attr('name') + "_id").val(ui.item.value)
+            return false;
+          }
+        }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+          return $( "<li>" )
+            .append( "<a>" + "<img src='"+ item.logo + "'>" + item.label + " </a>" )
+            .appendTo( ul );
+        };
+      }
 
   %body
     - if !current_player.nil?

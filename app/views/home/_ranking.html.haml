@@ -4,7 +4,7 @@
       %li{class: "pos#{ranking.row} ranking-row", id: ranking.player.id}
         %label{id: 'name'}= ranking.player.name
 
-        %a.ver-perfil{href: 'javascript:void(0);'}
+        %a.ver-perfil{href: "profiles/#{ranking.player.username}"}
 
         %label{id: 'username'}= ranking.player.username
         - if ranking.player.username != current_player.username

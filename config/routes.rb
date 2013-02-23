@@ -1,13 +1,20 @@
 HackdayGameRanking::Application.routes.draw do
+  
+  match 'profiles/:player_name' => 'profiles#show'
 
-  match 'profiles/:player_name' => 'profiles#show', :as => :profile
+  match 'teams/get_new_score_data/:player1/:player2' => 'teams#get_new_score_data'
+
+  match 'profiles/:player_name' => 'profiles#show', as: :profile
   match 'profiles' => 'profiles#index'
   
+
   devise_for :players
 
-  resources :games, :only => :create
+  resources :games, only: :create
 
   root to: 'home#index'
+
+  post 'comments/create', as: 'new_comment'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

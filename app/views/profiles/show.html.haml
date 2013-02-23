@@ -1,38 +1,38 @@
-%section.user-image
-  = image_tag(@p.pictureUrl)
-%section.infos
-  %section.personal
-    %p
-      %strong Nome
-      #{@p.name}
-    %p
-      %strong Email
-      #{@p.email}
-    %p
-      %strong Username
-      #{@p.username}
-    %p
-      %strong Time
-      #{@time.name}
-  %section.stats
-    %p
-      %strong Vitórias
-      #{@victorys.to_s}
-    %p
-      %strong Empates
-      #{@draws.to_s}
-    %p
-      %strong Derrotas
-      #{@loses.to_s}
+.user-image
+  = image_tag(@p.pictureUrl, :size => '160x160')
+
+.infos.personal
+  %p
+    %strong Nome
+    #{@p.name}
+  %p
+    %strong Email
+    #{@p.email}
+  %p
+    %strong Username
+    #{@p.username}
+  %p
+    %strong Time
+    #{@time}
+.infos.stats
+  %p
+    %strong Vitórias
+    #{@victorys.to_s}
+  %p
+    %strong Empates
+    #{@draws.to_s}
+  %p
+    %strong Derrotas
+    #{@loses.to_s}
 <!-- A section abaixo só aparece quando um usuário logado entra no perfil de outro usuário. -->
 -if(current_player.id != @p.id)
-  %section.last-challenges
+  .last-games.challenges
     %ul
       -@p.games_with_me(current_player.id)[0..4].each do |game|
         =render :partial => 'challenge', :locals => {:game => game}
 
 
-%section.last-games
+.last-games
   %ul
     -@p.games[0..4].each do |game|
       =render :partial => 'challenge', :locals => {:game => game}

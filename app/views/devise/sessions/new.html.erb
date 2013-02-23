@@ -4,8 +4,11 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <div>
+  	<%= f.label :password %><br />
+  	<%= f.password_field :password %>
+  	<label><input type="checkbox" id="mostrar-senha"> mostrar senha</label>
+  </div>
 
   <% if devise_mapping.rememberable? -%>
     <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
@@ -13,5 +16,14 @@
 
   <div><%= f.submit "Sign in" %></div>
 <% end %>
+
+<script>
+	$(function(){
+		$('#mostrar-senha').on('change', function(){
+			console.log('oi');
+			$('#player_password').attr('type', this.checked ? 'text' : 'password');
+		});
+	})
+</script>
 
 <%= render "devise/shared/links" %>
