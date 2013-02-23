@@ -171,7 +171,8 @@ footer{
     font-weight:bold;
 }
 
-input[type="text"]{
+input[type="text"],
+input[type="number"] {
     background:none;
     border:1px solid #ccc;
     border-radius:2px;

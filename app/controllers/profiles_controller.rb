@@ -5,7 +5,6 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @time = ""
     @p = Player.where(:username => params[:player_name]).first
     #puts @p.inspect
 
@@ -13,6 +12,8 @@ class ProfilesController < ApplicationController
     @draws = count_draws @p.games
     @loses = count_loses @p
     puts @games.inspect
+    @time = @p.most_used_team
+    @p.pictureUrl ||= 'user_avatar.png'
   end
 
   def count_draws(games)

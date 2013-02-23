@@ -42,12 +42,14 @@
             $('#jogador-visitante-id').val($this.prop('id'));
             $('#modal').fadeIn()
             $('#modal-bg').fadeIn()
+            $('header, footer, #wrapper').hide();
             return false
           })
 
           $('#close').click(function(){
               $('#modal').fadeOut()
               $('#modal-bg').fadeOut()
+              $('header, footer, #wrapper').show();
               return false
           })
 
@@ -61,6 +63,12 @@
                   $('#timeline').fadeIn()
               }
           });
+
+          // no Android, troca pra type=number pra mostrar teclado numerico.
+          // (desculpa pela detecacao de user agent :)
+          if (navigator.userAgent.indexOf('Android') >= 0) {
+            $('.input-numerico').attr('type', 'number');
+          }
       });
 
   %body
@@ -69,7 +77,7 @@
     %header
       %a#logo{:href => ""}
         %span Raking Fizir
-      %h1 Ranking da Escritorio
+      %h1 Ranking do Escritorio
       %a#novo-ranking{:href => ""} Novo Ranking
       = link_to('Sair', destroy_player_session_path, :method => :delete, :class=>'btn-sair')
     #wrapper

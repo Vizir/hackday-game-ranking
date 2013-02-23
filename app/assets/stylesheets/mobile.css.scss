@@ -68,14 +68,19 @@
 
 #timeline{
     float:left;
-    position:absolute;
-    z-index:99;
-    top:0;
-    left:0;
     width:100%;
     height:100%;
     background:#fff;
     display:none;
+}
+
+@media (max-width: 1023px) {
+    #timeline {
+        position:absolute;
+        z-index:99;
+        top:0;
+        left:0;
+    }
 }
 
 #timeline ul{
@@ -102,17 +107,6 @@
     width:100%;
 }
 
-
-#modal{
-    background:#fff;
-    width:100%;
-    height:100%;
-    position:fixed;
-    z-index:1000;
-}
-
-#modal-bg{
-}
 
 footer{
     position:fixed;
@@ -149,13 +143,12 @@ header h1{
 
 #modal{
     background:#fff;
-    width:92%;
-    height:120%;
-    position:fixed;
-    z-index:1000;
-    padding-left:4%;
-    padding-right:4%;
-    padding-top:2%;
+    width:100%;
+    padding: 4%;
+    float: left;
+
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 #modal-bg{
@@ -166,8 +159,7 @@ header h1{
     padding:0;
 }
 
-#modal [type='submit']{
-    position:absolute;
+#modal #submit-resultado{
     font-size: 18px;
     color: #fff;
     border-radius: 2px;
@@ -179,12 +171,8 @@ header h1{
     background-image: linear-gradient(#2da1ec, #0191d9);
     border: 1px solid #0082c3;
     font-family:'OpenSansLight';
-}
 
-#modal #submit-resultado{
-    top: 370px;
-    left: 4%;
-    width: 92%;
+    width: 100%;
 }
 
 #versus{
