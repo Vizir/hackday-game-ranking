@@ -56,6 +56,10 @@ HackdayGameRanking::Application.routes.draw do
     match "/sign_in" => "devise/sessions#new" 
   end
 
+  match 'profiles/:player_name' => 'profiles#show_profile'
+  match 'profiles' => 'profiles#index'
+
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
