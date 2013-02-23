@@ -22,6 +22,10 @@ GEM
       activesupport (= 3.2.12)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-mysql-adapter (0.0.1)
+      activerecord (>= 3.2.9)
+      activesupport (>= 3.2.9)
+      mysql (>= 2.9.0)
     activeresource (3.2.12)
       activemodel (= 3.2.12)
       activesupport (= 3.2.12)
@@ -70,6 +74,7 @@ GEM
     modernizr (2.6.2)
       sprockets (~> 2.0)
     multi_json (1.6.1)
+    mysql (2.9.1)
     mysql2 (0.3.11)
     nokogiri (1.5.6)
     orm_adapter (0.4.0)
@@ -136,6 +141,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-mysql-adapter
   acts_as_commentable (= 3.0.1)
   coffee-rails (~> 3.2.1)
   devise

@@ -24,8 +24,10 @@ Player.create [
 ]
 
 #Criação de rankings
+i=1 
 Player.all.each do |player|
-  Ranking.create player: player, league: League.first, position: player.id
+  Ranking.create player: player, league: League.first, position: i
+  i = i + 1 
 end
 
 Game.create :player1 => Player.first, :team1 => Team.first, :player2 => Player.last, :team2 => Team.last,  :player1_score => 5, :player2_score => 2, :league => League.first
