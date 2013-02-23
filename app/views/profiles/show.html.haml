@@ -1,0 +1,38 @@
+%section.user-image
+  Foto da pessoa
+%section.infos
+  %section.personal
+    %p
+      %strong Nome
+      #{@p.name}
+    %p
+      %strong Email
+      #{@p.email}
+    %p
+      %strong Username
+      #{@p.username}
+    %p
+      %strong Time
+      #{@time}
+  %section.stats
+    %p
+      %strong Vitórias
+      #{@victorys.to_s}
+    %p
+      %strong Empates
+      #{@draws.to_s}
+    %p
+      %strong Derrotas
+      #{@loses.to_s}
+<!-- A section abaixo só aparece quando um usuário logado entra no perfil de outro usuário. -->
+-if(current_player.id != @p.id)
+  %section.last-challenges
+    %ul
+      -@p.games_with_me(current_player.id)[0..4].each do |game|
+        =render :partial => 'challenge', :locals => {:game => game}
+
+
+%section.last-games
+  %ul
+    -@p.games[0..4].each do |game|
+      =render :partial => 'challenge', :locals => {:game => game}
