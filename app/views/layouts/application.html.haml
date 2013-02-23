@@ -40,12 +40,37 @@
             $('#jogador-visitante-id').val($this.prop('id'));
             $('#modal').fadeIn()
             $('#modal-bg').fadeIn()
+            $('header, footer, #wrapper').hide();
             return false
+          })
+
+          $('#ranking li').click(function(){
+            var $this = $(this);
+              $('#jogador-visitante').val($this.find('#username').text());
+              $('#jogador-visitante-id').val($this.prop('id'));
+              $.ajax({
+                url: 'teams/get_new_score_data/' + #{current_player.id} + '/' + $this.prop('id'),
+                success: function(data){
+                  $('#time-casa').val(data.last_team_player1.name);
+                  $('#time-visitante').val(data.last_team_player2.name);
+
+                  $('#game_player1_team_id').val(data.last_team_player1.id);
+                  $('#game_player2_team_id').val(data.last_team_player2.id);
+                  set_team_autocomplete(data.all_teams);
+                  $('#modal').fadeIn();
+                  $('#modal-bg').fadeIn();
+                },
+                error: function(){
+                  alert("Erro ao carregar os times");
+                }
+              });
+              return false
           })
 
           $('#close').click(function(){
               $('#modal').fadeOut()
               $('#modal-bg').fadeOut()
+              $('header, footer, #wrapper').show();
               return false
           })
 
@@ -59,7 +84,38 @@
                   $('#timeline').fadeIn()
               }
           });
+
+          // no Android, troca pra type=number pra mostrar teclado numerico.
+          // (desculpa pela detecacao de user agent :)
+          if (navigator.userAgent.indexOf('Android') >= 0) {
+            $('.input-numerico').attr('type', 'number');
+          }
+
+
+
+
       });
+
+      function set_team_autocomplete(teams){
+        $( ".team_autocomplete" ).autocomplete({
+          minLength: 0,
+          source: teams,
+          focus: function( event, ui ) {
+            $( "#project" ).val( ui.item.label );
+            return false;
+          },
+          select: function( event, ui ) {
+            $(this).val( ui.item.label );
+            $("#game_" + $(this).attr('name') + "_id").val(ui.item.value)
+            return false;
+          }
+        })
+        .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+          return $( "<li>" )
+            .append( "<a>" + "<img src='"+ item.logo + "'>" + item.label + " </a>" )
+            .appendTo( ul );
+        };
+      }
 
   %body
     - if !current_player.nil?

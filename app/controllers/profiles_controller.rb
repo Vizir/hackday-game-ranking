@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ProfilesController < ApplicationController
 
   def index
@@ -5,14 +6,18 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @time = ""
     @p = Player.where(:username => params[:player_name]).first
     #puts @p.inspect
 
     @victorys = count_victorys @p
     @draws = count_draws @p.games
     @loses = count_loses @p
-    puts @games.inspect
+    if (@p.games.size > 0)
+      @time = @p.most_used_team.name
+    else
+      @time = @p.username + ' ainda não jogou!'
+    end
+    @p.pictureUrl ||= 'user_avatar.png'
   end
 
   def count_draws(games)

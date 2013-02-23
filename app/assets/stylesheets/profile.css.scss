@@ -1,3 +1,13 @@
 // Place all the styles related to the profile controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.infos, .user-image,{
+  float:left;
+  margin: 5px;
+}
+
+.last-games{ 
+  float:left; 
+  width:100%;
+}

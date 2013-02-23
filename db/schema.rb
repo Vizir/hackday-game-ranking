@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20130223184321) do
     t.datetime "updated_at",                             :null => false
     t.string   "username"
     t.string   "name"
+    t.string   "pictureUrl"
   end
 
   add_index "players", ["email"], :name => "index_players_on_email", :unique => true
