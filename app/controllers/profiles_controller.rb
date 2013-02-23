@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
     @loses = count_loses @p
     puts @games.inspect
     @time = @p.most_used_team
+    @p.pictureUrl ||= 'user_avatar.png'
   end
 
   def count_draws(games)
