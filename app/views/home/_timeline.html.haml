@@ -1,6 +1,6 @@
 #timeline.block
   %ul
-    %li
-    %li
-    %li
-    %li
+    - @timeline.each do |t|   
+      %li
+        = t.message
+    
