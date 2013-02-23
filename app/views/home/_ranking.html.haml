@@ -3,4 +3,5 @@
     - @ranking.each do |ranking|
       %li{class: "pos#{ranking.row}", id: ranking.player.id}
         %label{id: 'name'}= ranking.player.name
+        %label{id: 'username'}= ranking.player.username
         %a.nova-partida{href: 'javascript:void(0);'}
