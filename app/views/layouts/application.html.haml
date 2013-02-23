@@ -62,7 +62,8 @@
       });
 
   %body
-    = render '/home/resultado'
+    - if !current_player.nil?
+      = render '/home/resultado'
     %header
       %a#logo{:href => ""}
         %span Raking Fizir

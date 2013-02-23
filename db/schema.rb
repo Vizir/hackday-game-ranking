@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130223142417) do
+ActiveRecord::Schema.define(:version => 20130223143200) do
 
   create_table "games", :force => true do |t|
     t.integer  "player1_id"
@@ -54,6 +54,19 @@ ActiveRecord::Schema.define(:version => 20130223142417) do
   add_index "players", ["email"], :name => "index_players_on_email", :unique => true
   add_index "players", ["reset_password_token"], :name => "index_players_on_reset_password_token", :unique => true
 
+  create_table "rankings", :force => true do |t|
+    t.integer  "league_id"
+    t.integer  "player_id"
+    t.integer  "position"
+    t.integer  "row"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "rankings", ["league_id"], :name => "index_rankings_on_league_id"
+  add_index "rankings", ["player_id"], :name => "index_rankings_on_player_id"
+  add_index "rankings", ["position"], :name => "index_rankings_on_position"
+
   create_table "teams", :force => true do |t|
     t.string   "name"
     t.string   "logo"
@@ -61,6 +74,14 @@ ActiveRecord::Schema.define(:version => 20130223142417) do
     t.integer  "middle"
     t.integer  "defense"
     t.float    "score"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "timelines", :force => true do |t|
+    t.string   "message"
+    t.integer  "league_id"
+    t.integer  "game_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
