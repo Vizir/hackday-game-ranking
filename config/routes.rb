@@ -1,4 +1,8 @@
 HackdayGameRanking::Application.routes.draw do
+  devise_for :players
+
+  root to: 'home#index'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -44,11 +48,17 @@ HackdayGameRanking::Application.routes.draw do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
-  #   end
+  #   endcontro
 
   # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  # just remember to delete public/index.html
+  devise_scope :player do 
+    match "/sign_in" => "devise/sessions#new" 
+  end
+
+  match 'profiles/:player_name' => 'profiles#show_profile'
+  match 'profiles' => 'profiles#index'
+
 
   # See how all your routes lay out with "rake routes"
 
