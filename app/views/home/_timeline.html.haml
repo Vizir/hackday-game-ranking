@@ -6,6 +6,8 @@
           = raw parse_timeline_message(t.message)
           %span
             = "#{time_ago_in_words(t.created_at)} antes"
-
-
-    
+        .comments-block
+          = render '/comments/comments', comments: t.comments
+          %a.comment-show{href: 'javascript:void(0);'} Comentar
+          .comments-area
+            = render '/comments/form', timeline_id: t.id

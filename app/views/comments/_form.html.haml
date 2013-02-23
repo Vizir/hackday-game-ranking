@@ -1,0 +1,6 @@
+.comment_item
+  = form_for :comment, url: new_comment_path do |f|
+    = f.text_area :comment, rows: 5
+    = hidden_field_tag :timeline_id, timeline_id
+
+    = f.submit 'Enviar'

@@ -43,3 +43,4 @@ gem "modernizr", "~> 2.6.2"
 gem "haml", "~> 4.0.0"
 gem "haml-rails", "~> 0.4"
 gem "nokogiri", "~> 1.5.6"
+gem 'acts_as_commentable', '3.0.1'

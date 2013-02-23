@@ -6,6 +6,8 @@ class Timeline < ActiveRecord::Base
 
   validates_presence_of :league, :message
 
+  acts_as_commentable
+
   def self.create_message_based_on_game (game)
     game_message (game.player1_score - game.player2_score)
     Timeline.create :message => "@#{game.player1.username} #{game.player1_score} X #{game.player2_score}  @#{game.player2.username}.", 
