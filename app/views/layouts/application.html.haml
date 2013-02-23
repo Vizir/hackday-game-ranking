@@ -59,22 +59,7 @@
       });
 
   %body
-    = yield
-    #modal-bg
-    #modal
-      %form
-        %h1 Adicione um resultado
-        #casa
-          %input#jogador-casa{:name => "jogador-casa", :type => "text"}/
-          %input#placar-casa{:name => "placar-casa", :type => "text"}/
-          %input#time-casa{:name => "time-casa", :type => "text"}/
-        #versus X
-        #visitante
-          %input#time-visitante{:name => "time-visitante", :type => "text"}/
-          %input#placar-visitante{:name => "placar-visitante", :type => "text"}/
-          %input#jogador-visitante{:name => "jogador-visitante", :type => "text"}/
-        %input#submit-resultado{:type => "submit"}/
-      #close X
+    = render 'resultado'
     %header
       %a#logo{:href => ""}
         %span Raking Fizir
@@ -83,26 +68,7 @@
       = link_to('Sair', destroy_player_session_path, :method => :delete)
     #wrapper
       %section
-        #ranking.block
-          %ul
-            %li.pos1
-              jogadorum
-              %a.nova-partida{:href => "#"}
-            %li.pos2 outronome
-            %li.pos2 nomede.jogador
-            %li.pos3 emaisnome.pra
-            %li.pos3 semideia.denome
-            %li.pos3 eumoutro
-            %li.pos4 sobrenomeenome
-            %li.pos4 rankinfifa
-            %li.pos4 fifarakingvizir
-            %li.pos4 vizirranking
-        #timeline.block
-          %ul
-            %li
-            %li
-            %li
-            %li
+        = yield
     %footer
       %a#goto-ranking{:href => ""} Ranking
       %a#goto-timeline{:href => ""} Timeline
