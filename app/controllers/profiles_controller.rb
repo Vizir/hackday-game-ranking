@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ProfilesController < ApplicationController
 
   def index
@@ -11,8 +12,11 @@ class ProfilesController < ApplicationController
     @victorys = count_victorys @p
     @draws = count_draws @p.games
     @loses = count_loses @p
-    puts @games.inspect
-    @time = @p.most_used_team
+    if (@p.games.size > 0)
+      @time = @p.most_used_team.name
+    else
+      @time = @p.username + ' ainda não jogou!'
+    end
     @p.pictureUrl ||= 'user_avatar.png'
   end
 
