@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130223135544) do
+ActiveRecord::Schema.define(:version => 20130223142417) do
 
   create_table "games", :force => true do |t|
     t.integer  "player1_id"
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(:version => 20130223135544) do
     t.integer  "middle"
     t.integer  "defense"
     t.float    "score"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "timelines", :force => true do |t|
+    t.string   "message"
+    t.integer  "league_id"
+    t.integer  "game_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
