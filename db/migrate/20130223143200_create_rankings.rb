@@ -1,4 +1,5 @@
 class CreateRankings < ActiveRecord::Migration
+  
   def change
     create_table :rankings do |t|
       t.references :league
@@ -7,7 +8,10 @@ class CreateRankings < ActiveRecord::Migration
 
       t.timestamps
     end
+
     add_index :rankings, :league_id
     add_index :rankings, :player_id
+    add_index :rankings, :position
   end
+
 end
