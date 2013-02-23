@@ -61,6 +61,12 @@
                   $('#timeline').fadeIn()
               }
           });
+
+          // no Android, troca pra type=number pra mostrar teclado numerico.
+          // (desculpa pela detecacao de user agent :)
+          if (navigator.userAgent.indexOf('Android') >= 0) {
+            $('.input-numerico').attr('type', 'number');
+          }
       });
 
   %body
