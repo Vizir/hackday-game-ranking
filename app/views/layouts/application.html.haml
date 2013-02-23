@@ -40,16 +40,19 @@
             var $this = $(this).parents('.ranking-row');
             $('#jogador-visitante').val($('#username', $this).text());
             $('#jogador-visitante-id').val($this.prop('id'));
-            $('#modal').fadeIn()
-            $('#modal-bg').fadeIn()
-            $('header, footer, #wrapper').hide();
+            $('#modal').fadeIn('fast')
+            $('#modal-bg').fadeIn('fast')
+            if($(window).width() <= 1024){
+              $('header, footer, #wrapper').hide();
+            }
             return false
           })
 
           $('#close').click(function(){
-              $('#modal').fadeOut()
-              $('#modal-bg').fadeOut()
-              $('header, footer, #wrapper').show();
+              $('#modal').fadeOut('fast')
+              $('#modal-bg').fadeOut('fast', function(){
+                $('header, footer, #wrapper').fadeIn('fast');            
+              })
               return false
           })
 
@@ -59,8 +62,8 @@
                   $('#timeline').fadeOut()
               } else {
                   $("#novo-ranking").html("Novo Ranking");
-                  $('#ranking').fadeIn()
-                  $('#timeline').fadeIn()
+                  $('#ranking').fadeIn('fast');
+                  $('#timeline').fadeIn('fast');
               }
           });
 

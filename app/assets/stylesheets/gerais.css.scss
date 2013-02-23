@@ -141,7 +141,7 @@ footer{
 #novo-ranking{
     position:absolute;
     @include btnStyle();
-    margin-right:65px;
+    margin-right:67px;
 }
 
 #modal{
@@ -192,4 +192,12 @@ input[type="number"] {
 
 #ranking label#username{
     display: none;
+}
+
+.ver-perfil {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
