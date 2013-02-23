@@ -2,7 +2,7 @@
 #modal
   = form_tag(games_path, :method => 'post', :id => 'create_game', :remote => true) do 
     %h1 Adicione um resultado
-    = hidden_field :game, :league_id, :value => @ranking.first.league_id
+    = #hidden_field :game, :league_id, :value => @ranking.first.league_id
     #casa
       = text_field_tag :player1_name, "#{current_player.try(:username)}", :id => "jogador-casa"
       = text_field :game, :player1_score, :id => "placar-casa", :class => "clearable"
