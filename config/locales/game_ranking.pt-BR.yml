@@ -1,0 +1,4 @@
+pt-BR:
+  sucesso:
+    create: "%{model} foi criado com sucesso"
+    update: "%{model} foi atualizado com sucesso"
