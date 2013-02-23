@@ -165,3 +165,15 @@ footer{
 #ranking label#username{
     display: none;
 }
+
+.ui-autocomplete{
+    z-index: 10000000 !important;
+}
+
+.ui-menu-item img{
+    width: 24px;
+}
+
+.ui-menu-item a{
+    font-size: 12px;
+}

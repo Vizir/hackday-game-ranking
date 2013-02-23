@@ -7,6 +7,8 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    :plain 
+      <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
     %meta{:content => "", :name => "description"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     :javascript
@@ -38,10 +40,22 @@
             var $this = $(this);
               $('#jogador-visitante').val($this.find('#username').text());
               $('#jogador-visitante-id').val($this.prop('id'));
-              
-              
-              $('#modal').fadeIn()
-              $('#modal-bg').fadeIn()
+              $.ajax({
+                url: 'teams/get_new_score_data/' + #{current_player.id} + '/' + $this.prop('id'),
+                success: function(data){
+                  $('#time-casa').val(data.last_team_player1.name);
+                  $('#time-visitante').val(data.last_team_player2.name);
+
+                  $('#game_player1_team_id').val(data.last_team_player1.id);
+                  $('#game_player2_team_id').val(data.last_team_player2.id);
+                  set_team_autocomplete(data.all_teams);
+                  $('#modal').fadeIn();
+                  $('#modal-bg').fadeIn();
+                },
+                error: function(){
+                  alert("Erro ao carregar os times");
+                }
+              });
               return false
           })
 
@@ -62,6 +76,26 @@
               }
           });
       });
+      function set_team_autocomplete(teams){
+        $( ".team_autocomplete" ).autocomplete({
+          minLength: 0,
+          source: teams,
+          focus: function( event, ui ) {
+            $( "#project" ).val( ui.item.label );
+            return false;
+          },
+          select: function( event, ui ) {
+            $(this).val( ui.item.label );
+            $("#game_" + $(this).attr('name') + "_id").val(ui.item.value)
+            return false;
+          }
+        })
+        .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+          return $( "<li>" )
+            .append( "<a>" + "<img src='"+ item.logo + "'>" + item.label + " </a>" )
+            .appendTo( ul );
+        };
+      }
 
   %body
     - if !current_player.nil?
