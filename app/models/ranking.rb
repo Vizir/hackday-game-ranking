@@ -15,4 +15,12 @@ class Ranking < ActiveRecord::Base
     row_player_1 == row_player_2 or row_player_1 == row_player_2 + 1 or row_player_1 == row_player_2 - 1
   end
 
+  after_create :create_timeline
+
+  private
+
+  def create_timeline
+    Timeline.create_message_based_on_ranking(self)
+  end
+
 end
