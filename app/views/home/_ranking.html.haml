@@ -1,14 +1,6 @@
 #ranking.block
   %ul
-    %li{:class => 'pos1', :id => '1'}
-      %label{:id => 'name'} Fabrício
-      %a.nova-partida{:href => "#"}
-    %li.pos2 outronome
-    %li.pos2 nomede.jogador
-    %li.pos3 emaisnome.pra
-    %li.pos3 semideia.denome
-    %li.pos3 eumoutro
-    %li.pos4 sobrenomeenome
-    %li.pos4 rankinfifa
-    %li.pos4 fifarakingvizir
-    %li.pos4 vizirranking
+    - @ranking.each do |ranking|
+      %li{class: "pos#{ranking.row}", id: ranking.player.id}
+        %label{id: 'name'}= ranking.player.name
+        %a.nova-partida{href: 'javascript:void(0);'}
