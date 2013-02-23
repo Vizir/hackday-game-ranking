@@ -41,3 +41,5 @@ end
 
 # To use debugger
 # gem 'debugger'
+
+gem "modernizr", "~> 2.6.2"
