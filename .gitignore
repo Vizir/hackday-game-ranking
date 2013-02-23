@@ -17,4 +17,4 @@ pickle-email-*.html
 *.DS_Store
 /config/database.yml
 /db/schema.rb
-.vagrant
+/.vagrant
