@@ -6,8 +6,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Player.create ([{:email => 'admin@player.com', :password => 'vizir123', :password_confirmation => 'vizir123', :username => 'Admin'}])
-league = League.create name: "Liga Padrão"
+
+league = League.create name: "Vizir League"
 
 Player.create [
   {email: 'diego@vizir.com.br', password: '12345678', password_confirmation: '12345678', name: 'Diego Nakamashi', username: 'nakamashi'},
@@ -23,10 +23,14 @@ Player.create [
   {email: 'ricardo@vizir.com.br', password: '12345678', password_confirmation: '12345678', name: 'Ricardo Zambelli', username: 'zambelli'}
 ]
 
-Player.all.each do |player|
-  Ranking.create player: player, league: league, position: player.id
+#Criação de rankings
+row = 1
+max_row = 1
+current_row = 0
+Player.all.each_with_index.map do |player, index|
+  row += 1 and max_row += 1 and current_row = 0 if current_row >= max_row
+  Ranking.create player: player, league: league, position: player.id, row: row
+  current_row += 1
 end
 
-league = League.create ({:name => "Vizir League" })
-
-g = Game.create ([{:player1 => Player.first, :player2 => Player.last,  :player1_score => 5, :player2_score => 2, :league => league }])
+Game.create :player1 => Player.first, :player2 => Player.last,  :player1_score => 5, :player2_score => 2, :league => league
