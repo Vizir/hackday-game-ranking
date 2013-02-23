@@ -7,6 +7,8 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    %meta{:name=>"apple-mobile-web-app-capable", :content=>"yes"}/
+    %meta{:name=>"apple-mobile-web-app-status-bar-style", :content=>"black"}/
     %meta{:content => "", :name => "description"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     :javascript
@@ -35,21 +37,12 @@
           })
 
           $('.nova-partida').click(function(){
-            var $this = $(this).parents('.ranking-row');
-            $('#jogador-visitante').val($('#username', $this).text());
-            $('#jogador-visitante-id').val($this.prop('id'));
-            $('#modal').fadeIn()
-            $('#modal-bg').fadeIn()
-            $('header, footer, #wrapper').hide();
-            return false
-          })
-
-          $('#ranking li').click(function(){
-            var $this = $(this);
+              var $this = $(this).parents('.ranking-row');
               $('#jogador-visitante').val($this.find('#username').text());
               $('#jogador-visitante-id').val($this.prop('id'));
+
               $.ajax({
-                url: 'teams/get_new_score_data/' + #{current_player.id} + '/' + $this.prop('id'),
+                url: 'teams/get_new_score_data/' + #{current_player.try(:id)} + '/' + $this.prop('id'),
                 success: function(data){
                   if(data.last_team_player1 != null){
                     $('#time-casa').val(data.last_team_player1.name);
@@ -60,8 +53,13 @@
                     $('#game_player2_team_id').val(data.last_team_player2.id);
                   }
                   set_team_autocomplete(data.all_teams);
-                  $('#modal').fadeIn();
-                  $('#modal-bg').fadeIn();
+
+                  $('#modal').fadeIn('fast')
+                  $('#modal-bg').fadeIn('fast')
+                  if($(window).width() <= 1024){
+                    $('header, footer, #wrapper').hide();
+                  }
+
                 },
                 error: function(){
                   alert("Erro ao carregar os times");
@@ -71,9 +69,10 @@
           })
 
           $('#close').click(function(){
-              $('#modal').fadeOut()
-              $('#modal-bg').fadeOut()
-              $('header, footer, #wrapper').show();
+              $('#modal').fadeOut('fast')
+              $('#modal-bg').fadeOut('fast', function(){
+                $('header, footer, #wrapper').fadeIn('fast');            
+              })
               return false
           })
 
@@ -83,8 +82,8 @@
                   $('#timeline').fadeOut()
               } else {
                   $("#novo-ranking").html("Novo Ranking");
-                  $('#ranking').fadeIn()
-                  $('#timeline').fadeIn()
+                  $('#ranking').fadeIn('fast');
+                  $('#timeline').fadeIn('fast');
               }
           });
 
