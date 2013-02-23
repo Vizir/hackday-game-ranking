@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @timeline = Timeline.all
+    @timeline = Timeline.order('created_at desc').all
     @ranking = Ranking.includes(:player).order(:position)
   end
 

@@ -28,4 +28,4 @@ Player.all.each do |player|
   Ranking.create player: player, league: League.first, position: player.id
 end
 
-Game.create :player1 => Player.first, :player2 => Player.last,  :player1_score => 5, :player2_score => 2, :league => League.first
+Game.create :player1 => Player.first, :team1 => Team.first, :player2 => Player.last, :team2 => Team.last,  :player1_score => 5, :player2_score => 2, :league => League.first

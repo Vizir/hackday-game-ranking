@@ -20,29 +20,42 @@ class Timeline < ActiveRecord::Base
   end
 
 private
-  def game_message(game)
+  def self.game_message(game)
     big_win_message = [
       "GOLEADA!!!",
-      "CHUPA #{game.loser.username}!!",
-      "Ótima Partida do #{game.winner.username}"
+      "CHUPA @#{game.loser.username}!!",
+      "Ótima Partida do @#{game.winner.username}."
+      "É melhor o @#{game.loser.username} treinar mais!"
     ]
 
     win_messages = [
-      "Boa vitória do #{game.winner.username}!!"
+      "Boa vitória do @#{game.winner.username}!!",
+      "Foi sofrido, mas o que vale é a vitória.",
+      "É, o @#{game.loser.username} não consegue ganhar mesmo."
     ]
 
     draw_messages = [
-      "Empate"
+      "Empate.",
+      "Foi um empate, mas o jogo foi disputado.",
+      "Apesar dos gols, os times não sairam do empate"
+    ]
+
+    oxo_messages = [
+      "Que jogo chato!",
+      "Jogo tão ruim que nenhum dos dois conseguiu fazer gol.",
+      "Os atacantes estão com o pé torto!"
     ]
 
     goals_diff = (game.player1_score - game.player2_score).abs
 
     if(goals_diff > 2)
       return big_win_message.sample
-    elsif(goals_diff == 0)
+    elsif(goals_diff > 0)
+      return win_messages.sample
+    elsif game.player1_score > 0 
       return draw_messages.sample
     else
-      return win_messages.sample
+      return oxo_messages.sample
     end
   end
 end
