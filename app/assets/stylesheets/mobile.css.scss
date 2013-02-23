@@ -1,3 +1,22 @@
+@mixin btnStyle() {
+    position: absolute;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 2px;
+    padding: 8px 15px;
+    background: rgb(22, 117, 165);
+    box-shadow: inset 0 1px 0 rgba(209, 209, 209, 0.4);
+    background-image: -webkit-linear-gradient(rgb(34, 134, 199), rgb(0, 122, 184));
+    background-image: -moz-linear-gradient(#2da1ec, #0191d9);
+    background-image: -ms-linear-gradient(#2da1ec, #0191d9);
+    background-image: linear-gradient(#2da1ec, #0191d9);
+    color: #fff;
+    border: 1px solid rgb(0, 88, 131);
+    font-family: 'OpenSansLight';
+    top: 5px;
+    right: 5px;
+    text-decoration:none;
+}
 
 #wrapper {
     width: 100%;
@@ -22,12 +41,15 @@
     padding: 0;
     margin: 0;
     border-bottom: 1px solid #fff;
-    width: 92%;
-    height: 42px;
+    width: 100%;
+    height: 50px;
     list-style: none;
     color: #fff;
     font-size: 22px;
     padding: 8px 4% 0px 4%;
+
+    -moz-box-sizing: border-box;
+         box-sizing: border-box;
 }
 
 #ranking ul li:hover {
@@ -35,16 +57,30 @@
     cursor:pointer;
 }
 
+#ranking #name {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    padding-right: 30px;
+}
+
 #timeline{
     float:left;
-    position:absolute;
-    z-index:99;
-    top:0;
-    left:0;
     width:100%;
     height:100%;
     background:#fff;
     display:none;
+}
+
+@media (max-width: 1023px) {
+    #timeline {
+        position:absolute;
+        z-index:99;
+        top:0;
+        left:0;
+    }
 }
 
 #timeline ul{
@@ -71,17 +107,6 @@
     width:100%;
 }
 
-
-#modal{
-    background:#fff;
-    width:100%;
-    height:100%;
-    position:fixed;
-    z-index:1000;
-}
-
-#modal-bg{
-}
 
 footer{
     position:fixed;
@@ -118,13 +143,12 @@ header h1{
 
 #modal{
     background:#fff;
-    width:92%;
-    height:120%;
-    position:fixed;
-    z-index:1000;
-    padding-left:4%;
-    padding-right:4%;
-    padding-top:2%;
+    width:100%;
+    padding: 4%;
+    float: left;
+
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 #modal-bg{
@@ -135,8 +159,7 @@ header h1{
     padding:0;
 }
 
-#modal [type='submit']{
-    position:absolute;
+#modal #submit-resultado{
     font-size: 18px;
     color: #fff;
     border-radius: 2px;
@@ -148,12 +171,8 @@ header h1{
     background-image: linear-gradient(#2da1ec, #0191d9);
     border: 1px solid #0082c3;
     font-family:'OpenSansLight';
-}
 
-#modal #submit-resultado{
-    top: 370px;
-    left: 4%;
-    width: 92%;
+    width: 100%;
 }
 
 #versus{
@@ -236,18 +255,11 @@ header h1{
 }
 
 #goto-ranking{
-    font-size: 16px;
-    color: #fff;
-    border-radius: 2px;
+    @include btnStyle();
+    top:0;
+    left:0;
+    position:relative;
     padding: 8px 0px;
-    background: rgb(22, 117, 165);
-    box-shadow: inset 0 1px 0 rgba(209, 209, 209, 0.4);
-    background-image: -webkit-linear-gradient(rgb(34, 134, 199), rgb(0, 122, 184));
-    background-image: -moz-linear-gradient(#2da1ec, #0191d9);
-    background-image: -ms-linear-gradient(#2da1ec, #0191d9);
-    background-image: linear-gradient(#2da1ec, #0191d9);
-    color: #fff;
-    border: 1px solid rgb(0, 88, 131);
     text-decoration:none;        
     width:48%;
     display:block;
@@ -258,18 +270,11 @@ header h1{
 }
 
 #goto-timeline{
-    font-size: 16px;
-    color: #fff;
-    border-radius: 2px;
+    @include btnStyle();
+    top:0;
+    left:0;
+    position:relative;
     padding: 8px 0px;
-    background: rgb(22, 117, 165);
-    box-shadow: inset 0 1px 0 rgba(209, 209, 209, 0.4);
-    background-image: -webkit-linear-gradient(rgb(34, 134, 199), rgb(0, 122, 184));
-    background-image: -moz-linear-gradient(#2da1ec, #0191d9);
-    background-image: -ms-linear-gradient(#2da1ec, #0191d9);
-    background-image: linear-gradient(#2da1ec, #0191d9);
-    color: #fff;
-    border: 1px solid rgb(0, 88, 131);
     text-decoration:none; 
     width:48%;           
     display:block;

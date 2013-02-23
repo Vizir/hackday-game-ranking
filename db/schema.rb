@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130223143200) do
+ActiveRecord::Schema.define(:version => 20130223183847) do
 
   create_table "games", :force => true do |t|
     t.integer  "player1_id"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20130223143200) do
     t.datetime "updated_at",                             :null => false
     t.string   "username"
     t.string   "name"
+    t.string   "pictureUrl"
   end
 
   add_index "players", ["email"], :name => "index_players_on_email", :unique => true

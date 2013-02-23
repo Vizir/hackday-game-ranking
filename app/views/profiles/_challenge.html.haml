@@ -1,1 +1,8 @@
-challenge
+%li
+  %span.team 
+    (#{game.player1.username}) 
+    %strong #{game.team1.name}
+  %span.resultado #{game.player1_score.to_s} X #{game.player2_score.to_s}
+  %span.other-team 
+    %strong #{game.team2.name} 
+    (#{game.player2.username})

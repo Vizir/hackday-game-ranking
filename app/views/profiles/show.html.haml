@@ -1,5 +1,5 @@
 %section.user-image
-  Foto da pessoa
+  = image_tag(@p.pictureUrl, :size => '160x160')
 %section.infos
   %section.personal
     %p
@@ -13,62 +13,26 @@
       #{@p.username}
     %p
       %strong Time
-      #{@time}
+      #{@time.name}
   %section.stats
     %p
       %strong Vitórias
-      #{@vitorias.to_s}
+      #{@victorys.to_s}
     %p
       %strong Empates
-      #{@empates.to_s}
+      #{@draws.to_s}
     %p
       %strong Derrotas
-      #{@derrotas.to_s}
+      #{@loses.to_s}
 <!-- A section abaixo só aparece quando um usuário logado entra no perfil de outro usuário. -->
-%section.last-challenges
-  %ul
-    =@p.games.each do |game|
-      render :partial => 'challenge'
-    %li
-      %span.team Barcelona
-      %span.resultado 3 X 1
-      %span.other-team Manchester United (Argentino)
-    %li
-      %span.team Barcelona
-      %span.resultado 3 X 1
-      %span.other-team Manchester United (Argentino)
-    %li
-      %span.team Barcelona
-      %span.resultado 3 X 1
-      %span.other-team Manchester United (Argentino)
-    %li
-      %span.team Barcelona
-      %span.resultado 3 X 1
-      %span.other-team Manchester United (Argentino)
-    %li
-      %span.team Barcelona
-      %span.resultado 3 X 1
-      %span.other-team Manchester United (Argentino)
+-if(current_player.id != @p.id)
+  %section.last-challenges
+    %ul
+      -@p.games_with_me(current_player.id)[0..4].each do |game|
+        =render :partial => 'challenge', :locals => {:game => game}
+
 
 %section.last-games
   %ul
-    %li
-      %span.team Barcelona
-      %span.resultado 3 X 1
-      %span.other-team Manchester United (Argentino)
-    %li
-      %span.team Barcelona
-      %span.resultado 3 X 1
-      %span.other-team Manchester United (Argentino)
-    %li
-      %span.team Barcelona
-      %span.resultado 3 X 1
-      %span.other-team Manchester United (Argentino)
-    %li
-      %span.team Barcelona
-      %span.resultado 3 X 1
-      %span.other-team Manchester United (Argentino)
-    %li
-      %span.team Barcelona
-      %span.resultado 3 X 1
-      %span.other-team Manchester United (Argentino)
+    -@p.games[0..4].each do |game|
+      =render :partial => 'challenge', :locals => {:game => game}
