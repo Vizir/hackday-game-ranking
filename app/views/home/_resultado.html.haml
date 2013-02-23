@@ -2,17 +2,20 @@
 #modal
   = form_tag(games_path, :method => 'post', :id => 'create_game', :remote => true) do 
     %h1 Adicione um resultado
-    = #hidden_field :game, :league_id, :value => @ranking.first.league_id
+    = hidden_field :game, :league_id, :value => @ranking.first.league_id
     #casa
       = text_field_tag :player1_name, "#{current_player.try(:username)}", :id => "jogador-casa"
       = text_field :game, :player1_score, :id => "placar-casa", :class => "clearable input-numerico", :placeholder => 0, :pattern => '[0-9]*'
-      = text_field :game, :player1_team_id, :id => "time-casa", :class => "clearable"
+      = text_field_tag :player1_team, nil, :id => "time-casa", :class => "clearable team_autocomplete"
+      = hidden_field :game, :player1_team_id, :class => "clearable"
     #versus X
     #visitante
       = text_field_tag :player2_name, nil, :id => "jogador-visitante"
-      = text_field :game, :player2_score, :id => "placar-visitante", :class => "clearable input-numerico", :placeholder => 0,  :pattern => '[0-9]*'
-      = text_field :game, :player2_team_id, :id => "time-visitante", :class => "clearable"
+      = text_field :game, :player2_score, :id => "placar-visitante", :class => "clearable input-numerico", :placeholder => 0, :pattern => '[0-9]*'
+      = text_field_tag :player2_team, nil, :id => "time-visitante", :class => "clearable team_autocomplete"
+      = hidden_field :game, :player2_team_id, :class => "clearable"
       = hidden_field :game, :player2_id, :id => "jogador-visitante-id", :class => "clearable"
     
     %input#submit-resultado{:type => "submit"}
   #close X
+
