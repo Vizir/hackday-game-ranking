@@ -80,6 +80,7 @@
         %span Raking Fizir
       %h1 Ranking da Escritorio
       %a#novo-ranking{:href => ""} Novo Ranking
+      = link_to('Sair', destroy_player_session_path, :method => :delete)
     #wrapper
       %section
         #ranking.block
