@@ -24,7 +24,7 @@ private
     big_win_message = [
       "GOLEADA!!!",
       "CHUPA @#{game.loser.username}!!",
-      "Ótima Partida do @#{game.winner.username}."
+      "Ótima Partida do @#{game.winner.username}.",
       "É melhor o @#{game.loser.username} treinar mais!"
     ]
 
