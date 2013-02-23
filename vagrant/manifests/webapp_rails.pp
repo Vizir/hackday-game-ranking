@@ -1,6 +1,6 @@
 class webapp_rails {
 
-  package { ['ruby1.9.3', 'libmysqlclient-dev', 'nodejs']:
+  package { ['ruby1.9.3', 'libmysqlclient-dev', 'nodejs', 'libxslt-dev', 'libxml2-dev', 'g++']:
     ensure  => present,
     require => Exec['apt-get upgrade']
   } ->
