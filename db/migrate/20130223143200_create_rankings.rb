@@ -5,6 +5,7 @@ class CreateRankings < ActiveRecord::Migration
       t.references :league
       t.references :player
       t.integer :position
+      t.integer :row
 
       t.timestamps
     end

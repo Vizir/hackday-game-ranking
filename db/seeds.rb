@@ -23,6 +23,12 @@ Player.create [
   {email: 'ricardo@vizir.com.br', password: '12345678', password_confirmation: '12345678', name: 'Ricardo Zambelli', username: 'zambelli'}
 ]
 
-Player.all.each do |player|
-  Ranking.create player: player, league: league, position: player.id
+#Criação de rankings
+row = 1
+max_row = 1
+current_row = 0
+Player.all.each_with_index.map do |player, index|
+  row += 1 and max_row += 1 and current_row = 0 if current_row >= max_row
+  Ranking.create player: player, league: league, position: player.id, row: row
+  current_row += 1
 end
