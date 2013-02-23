@@ -5,12 +5,12 @@
     = #hidden_field :game, :league_id, :value => @ranking.first.league_id
     #casa
       = text_field_tag :player1_name, "#{current_player.try(:username)}", :id => "jogador-casa"
-      = text_field :game, :player1_score, :id => "placar-casa", :class => "clearable"
+      = text_field :game, :player1_score, :id => "placar-casa", :class => "clearable", :value => 0
       = text_field :game, :player1_team_id, :id => "time-casa", :class => "clearable"
     #versus X
     #visitante
       = text_field_tag :player2_name, nil, :id => "jogador-visitante"
-      = text_field :game, :player2_score, :id => "placar-visitante", :class => "clearable"
+      = text_field :game, :player2_score, :id => "placar-visitante", :class => "clearable", :value => 0
       = text_field :game, :player2_team_id, :id => "time-visitante", :class => "clearable"
       = hidden_field :game, :player2_id, :id => "jogador-visitante-id", :class => "clearable"
     
