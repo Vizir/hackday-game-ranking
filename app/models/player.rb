@@ -9,6 +9,8 @@ class Player < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :name
   # attr_accessible :title, :body
 
+
+
   def games
     Game.where("player1_id = ? or player2_id = ?",self.id,self.id).all
   end

@@ -6,3 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Player.create ([{:email => 'admin@player.com', :password => 'vizir123', :password_confirmation => 'vizir123', :username => 'Admin'}])
+Player.create ([{:email => 'user@player.com', :password => 'vizir123', :password_confirmation => 'vizir123', :username => 'Usuario'}])
+
+league = League.create ({:name => "Vizir League" })
+
+g = Game.create ([{:player1 => Player.first, :player2 => Player.last,  :player1_score => 5, :player2_score => 2, :league => league }])
