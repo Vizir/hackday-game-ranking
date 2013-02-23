@@ -53,6 +53,8 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.21)
+    modernizr (2.6.2)
+      sprockets (~> 2.0)
     multi_json (1.6.1)
     mysql2 (0.3.11)
     polyglot (0.3.3)
@@ -118,6 +120,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
+  modernizr (~> 2.6.2)
   mysql2
   rails (= 3.2.12)
   rspec-rails
