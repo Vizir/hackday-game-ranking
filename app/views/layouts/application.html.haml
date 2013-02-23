@@ -46,10 +46,12 @@
                 success: function(data){
                   if(data.last_team_player1 != null){
                     $('#time-casa').val(data.last_team_player1.name);
+                    $("#game_player1_team_logo").attr('src', data.last_team_player1.logo)
                     $('#game_player1_team_id').val(data.last_team_player1.id);
                   }
                   if(data.last_team_player2 != null){
                     $('#time-visitante').val(data.last_team_player2.name);
+                    $("#game_player2_team_logo").attr('src', data.last_team_player2.logo)
                     $('#game_player2_team_id').val(data.last_team_player2.id);
                   }
                   set_team_autocomplete(data.all_teams);
@@ -92,10 +94,13 @@
           if (navigator.userAgent.indexOf('Android') >= 0) {
             $('.input-numerico').attr('type', 'number');
           }
-
-
-
-
+        $(".input-numerico, .team_autocomplete").focus(function(){
+          this.select();
+        });
+        
+        $(".input-numerico, .team_autocomplete").mouseup(function(e){
+          e.preventDefault();
+        });
       });
 
       function set_team_autocomplete(teams){
@@ -104,18 +109,22 @@
           source: teams,
           focus: function( event, ui ) {
             $(this).val( ui.item.label );
+            $("#game_" + $(this).attr('name') + "_logo").attr('src', ui.item.logo)
             return false;
           },
           select: function( event, ui ) {
             $(this).val( ui.item.label );
             $("#game_" + $(this).attr('name') + "_id").val(ui.item.value)
+            $("#game_" + $(this).attr('name') + "_logo").attr('src', ui.item.logo)
             return false;
           }
-        }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-          return $( "<li>" )
-            .append( "<a>" + "<img src='"+ item.logo + "'>" + item.label + " </a>" )
-            .appendTo( ul );
-        };
+        }).each(function(){
+          $(this).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+            return $( "<li>" )
+              .append( "<a>" + "<img src='"+ item.logo + "'>" + item.label + " </a>" )
+              .appendTo( ul );
+          };
+        });
       }
 
   %body
