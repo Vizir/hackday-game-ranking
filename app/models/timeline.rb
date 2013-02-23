@@ -7,8 +7,12 @@ class Timeline < ActiveRecord::Base
   validates_presence_of :league, :message
 
   def self.create_message_based_on_game (game)
-    puts "*" * 88
-    Timeline.create :message => "@#{game.winner[:username]} ganhou de @#{game.loser[:username]}", 
+    Timeline.create :message => "@#{game.winner[:username]} ganhou de @#{game.loser[:username]}.", 
                     :league => game.league, :game => game
+  end
+
+  def self.create_message_based_on_ranking (ranking)
+    Timeline.create :message => "@#{ranking.player.username} entrou no ranking.", 
+                    :league => ranking.league
   end
 end
