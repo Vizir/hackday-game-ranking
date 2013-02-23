@@ -18,4 +18,7 @@ class Player < ActiveRecord::Base
     Game.where("player1_id = ? or player2_id = ?",self.id,self.id).all
   end
 
+  def games_with_me(player_id)
+    Game.where("(player1_id = ? or player2_id = ?) and (player1_id = ? or player2_id = ?)",self.id,self.id,player_id, player_id).all
+  end
 end

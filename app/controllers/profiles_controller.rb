@@ -8,11 +8,10 @@ class ProfilesController < ApplicationController
     @time = ""
     @p = Player.where(:username => params[:player_name]).first
     #puts @p.inspect
-    @games = @p.games
 
-    @victorys = count_victorys @games, @p
-    @draws = count_draws @games
-    @loses = count_loses @games, @p
+    @victorys = count_victorys @p
+    @draws = count_draws @p.games
+    @loses = count_loses @p
     puts @games.inspect
   end
 
@@ -26,9 +25,9 @@ class ProfilesController < ApplicationController
     draws
   end
     
-  def count_victorys(games, player)
+  def count_victorys(player)
     victorys = 0
-    games.each do |game|
+    player.games.each do |game|
       if ((game.player1_score > game.player2_score && game.player1_id == player.id) || (game.player2_score > game.player1_score && game.player2_id == player.id))
         victorys = victorys + 1
       end
@@ -36,9 +35,9 @@ class ProfilesController < ApplicationController
     victorys
   end
 
-  def count_loses(games, player)
+  def count_loses(player)
     loses = 0
-    games.each do |game|
+    player.games.each do |game|
       if ((game.player1_score > game.player2_score && game.player2_id == player.id) || (game.player2_score > game.player1_score && game.player1_id == player.id))
         loses = loses + 1
       end

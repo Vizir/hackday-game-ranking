@@ -8,6 +8,9 @@ class Game < ActiveRecord::Base
   belongs_to :player1,  :class_name => "Player"
   belongs_to :player2,  :class_name => "Player"
 
+  belongs_to :team1,  :class_name => "Team"
+  belongs_to :team2,  :class_name => "Team"
+
   def winner
     if(player1_score > player2_score)
       return {:username=> self.player1.username, :score=> self.player1_score, :player=> self.player1}
