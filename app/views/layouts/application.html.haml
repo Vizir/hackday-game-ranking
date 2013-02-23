@@ -40,12 +40,14 @@
             $('#jogador-visitante-id').val($this.prop('id'));
             $('#modal').fadeIn()
             $('#modal-bg').fadeIn()
+            $('header, footer, #wrapper').hide();
             return false
           })
 
           $('#close').click(function(){
               $('#modal').fadeOut()
               $('#modal-bg').fadeOut()
+              $('header, footer, #wrapper').show();
               return false
           })
 
