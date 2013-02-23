@@ -2,5 +2,5 @@
   %ul
     - @timeline.each do |t|   
       %li
-        = t.message
+        = parse_timeline_message t.message
     
