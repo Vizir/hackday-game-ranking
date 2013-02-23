@@ -194,10 +194,24 @@ input[type="number"] {
     display: none;
 }
 
+
 .ver-perfil {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.ui-autocomplete{
+    z-index: 10000000 !important;
+}
+
+.ui-menu-item img{
+    width: 24px;
+}
+
+.ui-menu-item a{
+    font-size: 12px;
+
 }

@@ -140,6 +140,7 @@ DEPENDENCIES
   haml (~> 4.0.0)
   haml-rails (~> 0.4)
   jquery-rails
+  json
   modernizr (~> 2.6.2)
   mysql2
   nokogiri (~> 1.5.6)
