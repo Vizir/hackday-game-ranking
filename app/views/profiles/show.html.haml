@@ -4,29 +4,31 @@
   %section.personal
     %p
       %strong Nome
-      Admin
+      #{@p.name}
     %p
-      %srong Email
-      admin@player.com
+      %strong Email
+      #{@p.email}
     %p
       %strong Username
-      @admin
+      #{@p.username}
     %p
       %strong Time
-      Barcelona
+      #{@time}
   %section.stats
     %p
       %strong Vitórias
-      10
+      #{@vitorias.to_s}
     %p
       %strong Empates
-      20
+      #{@empates.to_s}
     %p
       %strong Derrotas
-      5
+      #{@derrotas.to_s}
 <!-- A section abaixo só aparece quando um usuário logado entra no perfil de outro usuário. -->
 %section.last-challenges
   %ul
+    =@p.games.each do |game|
+      render :partial => 'challenge'
     %li
       %span.team Barcelona
       %span.resultado 3 X 1
