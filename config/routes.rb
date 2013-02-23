@@ -2,6 +2,8 @@ HackdayGameRanking::Application.routes.draw do
 
   match 'profiles/:player_name' => 'profiles#show'
 
+  match 'teams/get_new_score_data/:player1/:player2' => 'teams#get_new_score_data'
+
   devise_for :players
 
   resources :games, :only => :create
