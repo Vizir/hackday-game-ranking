@@ -11,6 +11,7 @@ class DeviseCreatePlayers < ActiveRecord::Migration
 
       ## Rememberable
       t.datetime :remember_created_at
+      
 
       ## Trackable
       t.integer  :sign_in_count, :default => 0

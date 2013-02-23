@@ -7,7 +7,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-league = League.create name: "Liga Padrão"
+league = League.create name: "Vizir League"
 
 Player.create [
   {email: 'diego@vizir.com.br', password: '12345678', password_confirmation: '12345678', name: 'Diego Nakamashi', username: 'nakamashi'},
@@ -32,3 +32,5 @@ Player.all.each_with_index.map do |player, index|
   Ranking.create player: player, league: league, position: player.id, row: row
   current_row += 1
 end
+
+Game.create :player1 => Player.first, :player2 => Player.last,  :player1_score => 5, :player2_score => 2, :league => league
