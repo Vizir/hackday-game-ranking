@@ -5,7 +5,7 @@
     = #hidden_field :game, :league_id, :value => @ranking.first.league_id
     #casa
       = text_field_tag :player1_name, "#{current_player.try(:username)}", :id => "jogador-casa"
-      = text_field :game, :player1_score, :id => "placar-casa", :class => "clearable", :value => 0
+      = text_field :game, :player1_score, :id => "placar-casa", :class => "clearable", :value => 0, :pattern => '[0-9]*', :type => 'number'
       = text_field :game, :player1_team_id, :id => "time-casa", :class => "clearable"
     #versus X
     #visitante
