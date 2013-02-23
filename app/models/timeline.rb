@@ -9,6 +9,6 @@ class Timeline < ActiveRecord::Base
   def self.create_message_based_on_game (game)
     puts "*" * 88
     Timeline.create :message => "@#{game.winner[:username]} ganhou de @#{game.loser[:username]}", 
-                    :league => game.league
+                    :league => game.league, :game => game
   end
 end

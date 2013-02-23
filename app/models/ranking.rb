@@ -2,8 +2,11 @@ class Ranking < ActiveRecord::Base
   
   belongs_to :league
   belongs_to :player
-  attr_accessible :position, :player, :league, :row
+  attr_accessible :position, :player, :league
 
+  def row
+    ((-1.0 + Math.sqrt(1.0 + 8.0 * self.position)) / 2.0).ceil
+  end
 
   def self::valid_for_ranking?(player_1, player_2)
     row_player_1 = Ranking.where(player_id: player_1).first.row

@@ -2,5 +2,10 @@
   %ul
     - @timeline.each do |t|   
       %li
-        = t.message
+        %p
+          = raw parse_timeline_message(t.message)
+          %span
+            = "#{time_ago_in_words(t.created_at)} antes"
+
+
     

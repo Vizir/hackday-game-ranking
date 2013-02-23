@@ -2,6 +2,9 @@ class Player < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+
+  has_many :games
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -15,4 +18,7 @@ class Player < ActiveRecord::Base
     Game.where("player1_id = ? or player2_id = ?",self.id,self.id).all
   end
 
+  def games_with_me(player_id)
+    Game.where("(player1_id = ? or player2_id = ?) and (player1_id = ? or player2_id = ?)",self.id,self.id,player_id, player_id).all
+  end
 end
