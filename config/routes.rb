@@ -5,6 +5,8 @@ HackdayGameRanking::Application.routes.draw do
   
   devise_for :players
 
+  resources :games, :only => :create
+
   root to: 'home#index'
   
   # The priority is based upon order of creation:
