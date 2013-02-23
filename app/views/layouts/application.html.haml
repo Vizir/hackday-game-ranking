@@ -34,13 +34,13 @@
               return false
           })
 
-          $('#ranking li').click(function(){
-            var $this = $(this);
-              $('#jogador-visitante').val($this.find('#username').text());
-              $('#jogador-visitante-id').val($this.prop('id'));
-              $('#modal').fadeIn()
-              $('#modal-bg').fadeIn()
-              return false
+          $('.nova-partida').click(function(){
+            var $this = $(this).parents('.ranking-row');
+            $('#jogador-visitante').val($('#username', $this).text());
+            $('#jogador-visitante-id').val($this.prop('id'));
+            $('#modal').fadeIn()
+            $('#modal-bg').fadeIn()
+            return false
           })
 
           $('#close').click(function(){
@@ -67,9 +67,9 @@
     %header
       %a#logo{:href => ""}
         %span Raking Fizir
-      %h1 Ranking da Escritorio
+      %h1 Ranking do Escritorio
       %a#novo-ranking{:href => ""} Novo Ranking
-      = link_to('Sair', destroy_player_session_path, :method => :delete)
+      = link_to('Sair', destroy_player_session_path, :method => :delete, :class=>'btn-sair')
     #wrapper
       %section
         = yield

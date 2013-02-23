@@ -4,6 +4,10 @@
         width: 1000px;
     }
 
+    section {
+        padding-bottom: 100px;
+    }
+
     footer{
         display:none;
     }
@@ -35,6 +39,15 @@
         font-size: 22px;
         padding: 8px 4% 0px 4%;
     }
+
+    #ranking li:first-child, #timeline li:first-child{
+        border-radius:2px 2px 0px 0px;
+    }
+
+    #ranking li:last-child, #timeline li:last-child{
+        border-radius:0px 0px 2px 2px;
+    }
+
 
     #ranking ul li:hover {
         opacity:0.92;

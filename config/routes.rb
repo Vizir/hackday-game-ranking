@@ -1,7 +1,8 @@
 HackdayGameRanking::Application.routes.draw do
 
-  match 'profiles/:player_name' => 'profiles#show'
-
+  match 'profiles/:player_name' => 'profiles#show', :as => :profile
+  match 'profiles' => 'profiles#index'
+  
   devise_for :players
 
   resources :games, :only => :create
