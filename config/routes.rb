@@ -1,6 +1,12 @@
 HackdayGameRanking::Application.routes.draw do
+<<<<<<< HEAD
   devise_for :players
 
+=======
+
+  root to: 'home#index'
+  
+>>>>>>> 0c23d37d7cb78794f4b11bb7a5641f59cea96889
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
