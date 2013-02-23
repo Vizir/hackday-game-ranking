@@ -53,7 +53,7 @@
               $('#jogador-visitante').val($this.find('#username').text());
               $('#jogador-visitante-id').val($this.prop('id'));
               $.ajax({
-                url: 'teams/get_new_score_data/' + #{current_player.id} + '/' + $this.prop('id'),
+                url: 'teams/get_new_score_data/' + #{current_player.try(:id)} + '/' + $this.prop('id'),
                 success: function(data){
                   $('#time-casa').val(data.last_team_player1.name);
                   $('#time-visitante').val(data.last_team_player2.name);
