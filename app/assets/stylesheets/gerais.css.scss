@@ -111,6 +111,12 @@ footer{
     border-top: 1px solid rgb(248, 181, 61) !important;
 }
 
+.pos5{
+    background: #CA330D;
+    border-bottom: 1px solid #8B1717 !important;
+    border-top: 1px solid #F83D3D !important;
+}
+
 #logo{
     position:absolute;
     display:block;
@@ -193,3 +199,4 @@ input[type="text"]{
 
 #ranking label#username{
     display: none;
+}
