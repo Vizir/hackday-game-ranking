@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20130223135544) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "username"
+    t.string   "name"
   end
 
   add_index "players", ["email"], :name => "index_players_on_email", :unique => true
