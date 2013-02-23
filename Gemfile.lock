@@ -41,6 +41,13 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    haml (4.0.0)
+      tilt
+    haml-rails (0.4)
+      actionpack (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+      haml (>= 3.1, < 4.1)
+      railties (>= 3.1, < 4.1)
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -53,6 +60,8 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.21)
+    modernizr (2.6.2)
+      sprockets (~> 2.0)
     multi_json (1.6.1)
     mysql2 (0.3.11)
     polyglot (0.3.3)
@@ -117,7 +126,10 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  haml (~> 4.0.0)
+  haml-rails (~> 0.4)
   jquery-rails
+  modernizr (~> 2.6.2)
   mysql2
   rails (= 3.2.12)
   rspec-rails
