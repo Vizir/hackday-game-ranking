@@ -8,7 +8,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     %meta{:content => "", :name => "description"}/
-    %meta{:content => "initial-scale=1, maximum-scale=1.0, user-scalable=no", :name => "viewport"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     :javascript
       $(document).ready(function() {
         
@@ -35,6 +35,9 @@
           })
 
           $('#ranking li').click(function(){
+            var $this = $(this);
+              $('#jogador-visitante').val($this.find('#name').text());
+              $('#jogador-visitante-id').val($this.prop('id'));
               $('#modal').fadeIn()
               $('#modal-bg').fadeIn()
               return false
