@@ -1,5 +1,6 @@
 - if @game.valid?
-  $('#modal').fadeOut()
-  $('#modal-bg').fadeOut()
+  $('header, footer, #wrapper').show();
+  $('#modal').fadeOut('fast')
+  $('#modal-bg').fadeOut('fast')
   $('#create_game').find('.clearable').val('');
 
