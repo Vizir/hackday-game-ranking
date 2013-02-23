@@ -1,6 +1,6 @@
 #modal-bg
 #modal
-  = form_tag(games_path, :method => 'post', :id => 'create_game', :remote => true) do 
+  = form_tag(games_path, :method => 'post', :id => 'create_game') do 
     %h1 Adicione um resultado
     = hidden_field :game, :league_id, :value => @ranking.first.league_id
     #casa

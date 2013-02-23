@@ -5,9 +5,7 @@ class GamesController < ApplicationController
     @game.player1_id = current_player.id
     @game.save
     
-    respond_to do |format|
-      format.js
-    end
+    redirect_to root_path
   end
 
 end
