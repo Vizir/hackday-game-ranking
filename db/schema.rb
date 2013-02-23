@@ -65,12 +65,4 @@ ActiveRecord::Schema.define(:version => 20130223142417) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "timelines", :force => true do |t|
-    t.string   "message"
-    t.integer  "league_id"
-    t.integer  "game_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
 end
