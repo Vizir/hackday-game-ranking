@@ -140,6 +140,7 @@
       /%a#novo-ranking{:href => ""} Novo Ranking
       - if current_player.nil?
         = link_to('Entrar', new_player_session_path, :class=>'btn-sair')
+        = link_to('Quer um ranking deste?', "http://fifa-ranking.kickoffpages.com/", :class=>'btn-sair', :target => "_blank")
       - else
         = link_to('Sair', destroy_player_session_path, :method => :delete, :class=>'btn-sair')
     #wrapper
@@ -150,3 +151,15 @@
     %footer
       %a#goto-ranking{:href => ""} Ranking
       %a#goto-timeline{:href => ""} Timeline
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38803051-1']);
+      _gaq.push(['_setDomainName', 'herokuapp.com']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();

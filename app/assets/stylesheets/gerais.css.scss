@@ -24,7 +24,8 @@ a {
 }
 
 @mixin btnStyle() {
-    position: absolute;
+    position: relative;
+    float: right;
     font-size: 16px;
     color: #fff;
     border-radius: 2px;
@@ -38,8 +39,7 @@ a {
     color: #fff;
     border: 1px solid rgb(0, 0, 0);
     font-family: 'OpenSansLight';
-    top: 5px;
-    right: 5px;
+    top: -40px;
     text-decoration: none;
     font-weight: bold;
 }
