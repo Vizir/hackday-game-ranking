@@ -41,9 +41,12 @@
               $('#jogador-visitante').val($this.find('#username').text());
               $('#jogador-visitante-id').val($this.prop('id'));
 
+              $('#modal-bg').fadeIn('fast');
+
               $.ajax({
                 url: 'teams/get_new_score_data/' + #{current_player.try(:id)} + '/' + $this.prop('id'),
                 success: function(data){
+
                   if(data.last_team_player1 != null){
                     $('#time-casa').val(data.last_team_player1.name);
                     $("#game_player1_team_logo").attr('src', data.last_team_player1.logo)
@@ -56,12 +59,13 @@
                   }
                   set_team_autocomplete(data.all_teams);
 
-                  $('#modal').fadeIn('fast')
-                  $('#modal-bg').fadeIn('fast')
-                  if($(window).width() <= 1024){
-                    $('header, footer, #wrapper').hide();
-                  }
+                  setTimeout("$('#modal').fadeIn('fast')", 300)
 
+                  if($(window).width() <= 1024){
+                    setTimeout("$('header, footer, #wrapper').hide(); $('#modal-bg').fadeOut('fast');", 300);                     
+                  } else {
+                    $('#modal-bg').fadeIn('fast')
+                  }
                 },
                 error: function(){
                   alert("Erro ao carregar os times");
@@ -73,7 +77,11 @@
           $('#close').click(function(){
               $('#modal').fadeOut('fast')
               $('#modal-bg').fadeOut('fast', function(){
-                $('header, footer, #wrapper').fadeIn('fast');            
+              if($(window).width() >= 1024){
+                $('header, #wrapper').fadeIn('fast');               
+              } else {
+                $('header, footer, #wrapper').fadeIn('fast');
+              }
               })
               return false
           })

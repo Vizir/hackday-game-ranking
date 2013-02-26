@@ -59,8 +59,10 @@
 
 
 #ranking ul li label#name,  #ranking ul li label#name{
-    top:-10px;
-    position:relative;
+    top:9px;
+    left:48px;
+    position:absolute;
+
 }
 
 
@@ -157,9 +159,6 @@ header h1{
 
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-}
-
-#modal-bg{
 }
 
 #modal h1{

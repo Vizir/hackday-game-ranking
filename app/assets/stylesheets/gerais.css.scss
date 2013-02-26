@@ -162,6 +162,25 @@ footer{
 
 #modal-bg{
     display:none;
+    z-index:999999;
+    width:100%;
+    height:100%;
+    position:fixed;
+    background:#000;
+    z-index:1000;
+    opacity:0.9;
+}
+
+#loading{
+    width:62px;
+    height:32px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-top:-50px;
+    background-size:50%;
+    background:url(loading.gif);
+    background-repeat:no-repeat;
 }
 
 #close{
