@@ -6,6 +6,6 @@ $ ->
   $('.comment-show').click ->
     $block = $(this).parents('.comments-block').find('.comments-area')
     if $block.is(':visible')
-      $block.hide()
+      $block.slideUp()
     else
-      $block.show()
+      $block.slideDown()
