@@ -142,15 +142,11 @@
       %a#logo{:href => ""}
         %span
       %h1 Ranking do Escritorio
-<<<<<<< HEAD
       /%a#novo-ranking{:href => ""} Novo Ranking
       - if current_player.nil?
         = link_to('Entrar', new_player_session_path, :class=>'btn-sair')
       - else
         = link_to('Sair', destroy_player_session_path, :method => :delete, :class=>'btn-sair')
-=======
-      = link_to('Sair', destroy_player_session_path, :method => :delete, :class=>'btn-sair')
->>>>>>> ac5f800af7a4d064fb43823e3bf73e46051ea465
     #wrapper
       %section
         = yield
