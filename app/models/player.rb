@@ -6,7 +6,7 @@ class Player < ActiveRecord::Base
   has_many :games
   has_many :rankings
 
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model

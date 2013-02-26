@@ -44,5 +44,9 @@ gem "haml", "~> 4.0.0"
 gem "haml-rails", "~> 0.4"
 gem "nokogiri", "~> 1.5.6"
 gem 'acts_as_commentable', '3.0.1'
+<<<<<<< HEAD
 gem 'gravatar_image_tag'
 
+=======
+gem "activerecord-mysql-adapter"
+>>>>>>> ac5f800af7a4d064fb43823e3bf73e46051ea465
