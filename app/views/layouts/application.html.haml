@@ -14,7 +14,6 @@
     :javascript
       $(document).ready(function() {
         
-        var mobile_active_view = 'ranking';
         var windowHeight = $(window).height();
         var headerHeight = $('header').height();
         var footerHeight = $('footer').height();
@@ -26,17 +25,15 @@
           }
 
           $('#goto-ranking').click(function(){
-              $('#timeline').fadeOut();
-              $('#ranking').fadeIn();
-              mobile_active_view = 'ranking';
-              return false;
+              $('#timeline').fadeOut()
+              $('#ranking').fadeIn()
+              return false
           })
 
           $('#goto-timeline').click(function(){
-              $('#ranking').fadeOut();
-              $('#timeline').fadeIn();
-              mobile_active_view = 'timeline';
-              return false;
+              $('#ranking').fadeOut()
+              $('#timeline').fadeIn()
+              return false
           })
 
           $('.nova-partida').click(function(){
@@ -74,7 +71,7 @@
                   alert("Erro ao carregar os times");
                 }
               });
-              return false;
+              return false
           })
 
           $('#close').click(function(){
@@ -86,13 +83,13 @@
                 $('header, footer, #wrapper').fadeIn('fast');
               }
               })
-              return false;
+              return false
           })
 
           $(window).resize(function() {                
-              if($(window).width() <= 1024 && mobile_active_view = 'ranking'){
+              if($(window).width() <= 1024){
                   $("#novo-ranking").html("+");
-                  $('#timeline').fadeOut();
+                  $('#timeline').fadeOut()
               } else {
                   $("#novo-ranking").html("Novo Ranking");
                   $('#ranking').fadeIn('fast');
@@ -148,26 +145,11 @@
       /%a#novo-ranking{:href => ""} Novo Ranking
       - if current_player.nil?
         = link_to('Entrar', new_player_session_path, :class=>'btn-sair')
-        = link_to('Quer um ranking deste?', "http://fifa-ranking.kickoffpages.com/", :class=>'btn-sair', :target => "_blank")
       - else
         = link_to('Sair', destroy_player_session_path, :method => :delete, :class=>'btn-sair')
     #wrapper
       %section
         = yield
-        .social-plugins
-          = render '/home/social-plugins'
     %footer
       %a#goto-ranking{:href => ""} Ranking
       %a#goto-timeline{:href => ""} Timeline
-    :javascript
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-38803051-1']);
-      _gaq.push(['_setDomainName', 'herokuapp.com']);
-      _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
