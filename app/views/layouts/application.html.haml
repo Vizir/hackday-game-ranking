@@ -145,6 +145,8 @@
     #wrapper
       %section
         = yield
+        .social-plugins
+          = render '/home/social-plugins'
     %footer
       %a#goto-ranking{:href => ""} Ranking
       %a#goto-timeline{:href => ""} Timeline
