@@ -14,6 +14,7 @@
     :javascript
       $(document).ready(function() {
         
+        var mobile_active_view = 'ranking';
         var windowHeight = $(window).height();
         var headerHeight = $('header').height();
         var footerHeight = $('footer').height();
@@ -25,15 +26,17 @@
           }
 
           $('#goto-ranking').click(function(){
-              $('#timeline').fadeOut()
-              $('#ranking').fadeIn()
-              return false
+              $('#timeline').fadeOut();
+              $('#ranking').fadeIn();
+              mobile_active_view = 'ranking';
+              return false;
           })
 
           $('#goto-timeline').click(function(){
-              $('#ranking').fadeOut()
-              $('#timeline').fadeIn()
-              return false
+              $('#ranking').fadeOut();
+              $('#timeline').fadeIn();
+              mobile_active_view = 'timeline';
+              return false;
           })
 
           $('.nova-partida').click(function(){
@@ -56,8 +59,8 @@
                   }
                   set_team_autocomplete(data.all_teams);
 
-                  $('#modal').fadeIn('fast')
-                  $('#modal-bg').fadeIn('fast')
+                  $('#modal').fadeIn('fast');
+                  $('#modal-bg').fadeIn('fast');
                   if($(window).width() <= 1024){
                     $('header, footer, #wrapper').hide();
                   }
@@ -67,7 +70,7 @@
                   alert("Erro ao carregar os times");
                 }
               });
-              return false
+              return false;
           })
 
           $('#close').click(function(){
@@ -75,13 +78,13 @@
               $('#modal-bg').fadeOut('fast', function(){
                 $('header, footer, #wrapper').fadeIn('fast');            
               })
-              return false
+              return false;
           })
 
           $(window).resize(function() {                
-              if($(window).width() <= 1024){
+              if($(window).width() <= 1024 && mobile_active_view = 'ranking'){
                   $("#novo-ranking").html("+");
-                  $('#timeline').fadeOut()
+                  $('#timeline').fadeOut();
               } else {
                   $("#novo-ranking").html("Novo Ranking");
                   $('#ranking').fadeIn('fast');
