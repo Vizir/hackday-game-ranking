@@ -7,5 +7,5 @@
         %a.ver-perfil{href: "profiles/#{ranking.player.username}"}
 
         %label{id: 'username'}= ranking.player.username
-        - if ranking.player.username != current_player.username
+        - if !current_player.nil? && ranking.player.username != current_player.username
           %a.nova-partida{href: 'javascript:void(0);'}

@@ -11,7 +11,7 @@ class Comment < ActiveRecord::Base
   #acts_as_voteable
 
   # NOTE: Comments belong to a user
-  belongs_to :user
+  belongs_to :player, :class_name => "Player", :foreign_key => "user_id"
 
   attr_accessible :comment
 end

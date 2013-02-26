@@ -135,7 +135,10 @@
         %span Raking Fizir
       %h1 Ranking do Escritorio
       /%a#novo-ranking{:href => ""} Novo Ranking
-      = link_to('Sair', destroy_player_session_path, :method => :delete, :class=>'btn-sair')
+      - if current_player.nil?
+        = link_to('Entrar', new_player_session_path, :class=>'btn-sair')
+      - else
+        = link_to('Sair', destroy_player_session_path, :method => :delete, :class=>'btn-sair')
     #wrapper
       %section
         = yield
