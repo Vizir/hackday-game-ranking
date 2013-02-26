@@ -18,6 +18,11 @@ body, html{
     font-family:'OpenSansLight';
 }
 
+a {
+    color: rgb(0, 132, 180);
+    text-decoration: none;
+}
+
 @mixin btnStyle() {
     position: absolute;
     font-size: 16px;

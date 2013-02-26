@@ -4,6 +4,7 @@ class Player < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
 
   has_many :games
+  has_many :rankings
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

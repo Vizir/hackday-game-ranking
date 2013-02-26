@@ -9,6 +9,7 @@ class ProfilesController < ApplicationController
     @p = Player.where(:username => params[:player_name]).first
     #puts @p.inspect
 
+    @ranking = @p.rankings
     @victorys = count_victorys @p
     @draws = count_draws @p.games
     @loses = count_loses @p
