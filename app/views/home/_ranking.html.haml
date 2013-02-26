@@ -2,8 +2,8 @@
   %ul
     - @ranking.each do |ranking|
       %li{class: "pos#{ranking.row} ranking-row", id: ranking.player.id}
+        = gravatar_image_tag(ranking.player.email, :alt => ranking.player.name, :gravatar => { :size => 34 })
         %label{id: 'name'}= ranking.player.name
-
         %a.ver-perfil{href: "profiles/#{ranking.player.username}"}
 
         %label{id: 'username'}= ranking.player.username

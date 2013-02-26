@@ -1,5 +1,5 @@
 .user-image
-  = image_tag(@p.pictureUrl, :size => '160x160')
+  = gravatar_image_tag(@p.email, :alt => @p.name, :gravatar => { :size => 160 })
 
 .infos.personal
   %p
