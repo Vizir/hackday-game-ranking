@@ -161,12 +161,38 @@ header h1{
     box-sizing: border-box;
 }
 
+#modal .header{
+    width: 100%;
+    text-align: center;
+}
+
+#modal .home img.team_logo{
+    float: left;
+    width: 85px;
+}
+
+#modal .away img.team_logo{
+    margin-left: 5px;
+    float: rigth;
+    width: 85px;
+}
+
+#modal-bg{
+    width:100%;
+    height:100%;
+    position:fixed;
+    background:#000;
+    z-index:1000;
+    opacity:0.9;
+}
+
 #modal h1{
     margin:0px 0px 20px 0px;
     padding:0;
 }
 
-#modal #submit-resultado{
+#modal [type='submit']{
+    position:absolute;
     font-size: 18px;
     color: #fff;
     border-radius: 2px;
@@ -178,87 +204,67 @@ header h1{
     background-image: linear-gradient(#2da1ec, #0191d9);
     border: 1px solid #0082c3;
     font-family:'OpenSansLight';
+}
 
+#modal #submit-resultado{
+    top:245px;
+    right:30px;
+    width:550px;
+}
+
+.match_data{
+    float: left;
     width: 100%;
+    height: 115px;
 }
-
-#versus{
-    width:100%;
-    height:73px;
-    text-align:center;
-    position:relative;
+.match_data input{
+    width: 230px;
+    height: 40px;
+    padding: 0px 10px 0px 10px;
+    margin-bottom: 10px;
+}
+.match_data .home, .match_score .home{
+    width: 50%;
+    float: left;
+}
+.match_data .away, .match_score .away{
+    width: 50%;
+    float: right;
+}
+.match_score{
+    width: 100%;
     float:left;
-    left: 4%;
-    top: 1px;
-    margin-left:0x;
-    font-size:52px;
-
 }
 
-#casa{
-    width:100%;
-    float:left;
-    min-height: 80px;
-    position:relative;
+.match_score .home{
+    width: 50%;
+    float: le;
 }
 
-#visitante{
-    width:100%;
-    float:left;
-    min-height:100px;
-    position:relative;
+.match_score .away{
+    width: 50%;
+    float: right;
 }
 
-#jogador-casa{
-    position:absolute;
-    width:140px;
-    height:30px;
-    padding:0px 10px 0px 10px;
+.match_score .home .team_logo{
+    margin-left: 90px;
 }
 
-#placar-casa{
-    position:absolute;
-    width:40px;
-    text-align:center;
-    height:70px;
-    left:170px;
-    font-size:35px;
-    padding:0px 10px;
-}
-
-#time-casa{
-    top:40px;
-    position:absolute;
-    width:140px;
-    height:30px;
-    padding:0px 10px 0px 10px;
-}
-
-#jogador-visitante{
-    position:absolute;
-    width:140px;
-    height:30px;
-    padding:0px 10px 0px 10px;
-    right:0;
-}
-
-#placar-visitante{
-    position:absolute;
-    width:40px;
-    text-align:center;
-    height:70px;
-    right:170px;
-    font-size:35px;
-    padding:0px 10px;
-}
-
-#time-visitante{
-    top:40px;
-    position:absolute;
-    width:140px;
-    height:30px;
-    padding:0px 10px 0px 10px;
-    right:0;
+.match_score .score{
+    width: 55px;
+    text-align: center;
+    height: 70px;
+    font-size: 40px;
+    padding: 0px 10px;
+    float: left;
+    color: #fff;
+    font-weight: bold;
+    border: 1px #2E4962 solid;
+    background-image: linear-gradient(bottom, rgb(49,101,143) 37%, rgb(64,116,161) 69%, rgb(65,122,168) 85%);
+    background-image: -o-linear-gradient(bottom, rgb(49,101,143) 37%, rgb(64,116,161) 69%, rgb(65,122,168) 85%);
+    background-image: -moz-linear-gradient(bottom, rgb(49,101,143) 37%, rgb(64,116,161) 69%, rgb(65,122,168) 85%);
+    background-image: -webkit-linear-gradient(bottom, rgb(49,101,143) 37%, rgb(64,116,161) 69%, rgb(65,122,168) 85%);
+    background-image: -ms-linear-gradient(bottom, rgb(49,101,143) 37%, rgb(64,116,161) 69%, rgb(65,122,168) 85%);
 }
 
 #goto-ranking{

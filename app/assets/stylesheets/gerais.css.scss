@@ -14,7 +14,7 @@ body, html{
     margin:0;
     padding:0;
     height:100%;
-    border: 0 none; 
+    border: 0 none;
     font-family:'OpenSansLight';
 }
 
@@ -158,6 +158,12 @@ footer{
 
 #modal{
     display:none;
+    -webkit-box-shadow: 0 0 32px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 0 32px rgba(0,0,0,0.6);
+    box-shadow: 0 0 32px rgba(0,0,0,0.6);
+    border-radius: 0.25em;
+    -webkit-transform: scale(0.8);
+    -webkit-transition: -webkit-transform .2s ease-in-out;
 }
 
 #modal-bg{
@@ -169,6 +175,10 @@ footer{
     background:#000;
     z-index:1000;
     opacity:0.9;
+}
+
+#modal h2{
+    margin-top: -15px;
 }
 
 #loading{
@@ -218,7 +228,7 @@ input[type="number"] {
     right:0;
     top:0;
     background:url(ball.png) 12px 12px no-repeat;
-    background-size:50%; 
+    background-size:50%;
 }
 
 #ranking label#username{
@@ -248,7 +258,7 @@ input[type="number"] {
 }
 
 .comment-block{
-    margin-bottom:3px; 
+    margin-bottom:3px;
 }
 
 .comment-text{
@@ -261,7 +271,7 @@ input[type="number"] {
 }
 
 .comments-block textarea{
-    width:98%;  
+    width:98%;
     border:1px solid #ccc;
     border-radius:2px;
 }
@@ -278,7 +288,7 @@ input[type="number"] {
     font-size:14px;
     padding:5px 10px;
     float:left;
-    margin-top:10px; 
+    margin-top:10px;
     top:0;
     left:0;
 }

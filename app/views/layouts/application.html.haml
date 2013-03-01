@@ -13,7 +13,7 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     :javascript
       $(document).ready(function() {
-        
+
         var mobile_active_view = 'ranking';
         var windowHeight = $(window).height();
         var headerHeight = $('header').height();
@@ -65,7 +65,7 @@
                   setTimeout("$('#modal').fadeIn('fast')", 300)
 
                   if($(window).width() <= 1024){
-                    setTimeout("$('header, footer, #wrapper').hide(); $('#modal-bg').fadeOut('fast');", 300);                     
+                    setTimeout("$('header, footer, #wrapper').hide(); $('#modal-bg').fadeOut('fast');", 300);
                   } else {
                     $('#modal-bg').fadeIn('fast')
                   }
@@ -81,7 +81,7 @@
               $('#modal').fadeOut('fast')
               $('#modal-bg').fadeOut('fast', function(){
               if($(window).width() <= 1024){
-                $('header, #wrapper').fadeIn('fast');               
+                $('header, #wrapper').fadeIn('fast');
               } else {
                 $('header, footer, #wrapper').fadeIn('fast');
               }
@@ -89,7 +89,7 @@
               return false;
           })
 
-          $(window).resize(function() {                
+          $(window).resize(function() {
               if($(window).width() <= 1024 && mobile_active_view = 'ranking'){
                   $('#timeline').fadeOut()
               } else {
@@ -107,7 +107,7 @@
         $(".input-numerico, .team_autocomplete").focus(function(){
           this.select();
         });
-        
+
         $(".input-numerico, .team_autocomplete").mouseup(function(e){
           e.preventDefault();
         });
@@ -139,7 +139,7 @@
 
   %body
     - if !current_player.nil?
-      = render '/home/resultado'
+      = render '/home/match'
     %header
       %a#logo{:href => ""}
         %span
@@ -154,7 +154,7 @@
       %section
         = yield
         .social-plugins
-          = render '/home/social-plugins'        
+          = render '/home/social-plugins'
     %footer
       %a#goto-ranking{:href => ""} Ranking
       %a#goto-timeline{:href => ""} Timeline
