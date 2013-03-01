@@ -1,8 +1,15 @@
 class HomeController < ApplicationController
 
   def index
-    @timeline = Timeline.order('created_at desc').all
-    @ranking = Ranking.includes(:player).order(:position)
+    if current_player.nil?
+      league = League.first #Definir uma liga Default 
+    else
+      league = current_player.leagues.first
+    end
+    @ranking = Ranking.where(:league_id => league).order(:position)
+    @timeline = Timeline.where(:league_id => league).order('created_at desc')
   end
+
+
 
 end

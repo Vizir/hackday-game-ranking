@@ -13,7 +13,15 @@ class Player < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :name, :picture_url
   # attr_accessible :title, :body
 
-
+  def leagues
+    rankings = Ranking.where(:player_id => self.id)
+    league_ids = []
+    rankings.each do |r|
+      league_ids << r.league_id
+    end
+    leagues = League.where(:id => league_ids)
+    leagues
+  end
 
   def games
     Game.where("player1_id = ? or player2_id = ?",self.id,self.id).all
