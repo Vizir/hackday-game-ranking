@@ -39,7 +39,7 @@ private
     ranking_messages = [
       "@#{winner.username} foi para #{ranking_winner.position} lugar.",
       "@#{loser.username} caiu para #{ranking_loser.position} lugar.", 
-      "@#{winner.username} agora é o #{ranking_winner.position} e @#{loser.username} o #{ranking_loser.position}.",
+      "@#{winner.username} agora é o #{ranking_winner.position} e @#{loser.username} é o #{ranking_loser.position}.",
       "A #{ranking_winner.position} é ocupada por @#{winner.username}." 
     ]
 
