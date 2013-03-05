@@ -2,7 +2,7 @@
   #loading{:src => "loading.gif"}
 #modal
   .header
-    #close X
+    #close x
   = form_tag(games_path, :method => 'post', :id => 'create_game') do
     = hidden_field :game, :league_id, :value => @ranking.first.league_id
     .match_data

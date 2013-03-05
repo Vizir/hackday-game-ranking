@@ -215,7 +215,7 @@ footer{
     height: 115px;
 }
 .match_data input{
-    width: 65%;
+    width: 80%;
     height: 40px;
     padding: 0px 10px 0px 10px;
     margin-bottom: 10px;
@@ -227,6 +227,10 @@ footer{
 .match_data .away, .match_score .away{
     width: 50%;
     float: right;
+}
+
+.match_data .away[type='input']{
+    float: left;
 }
 .match_score{
     width: 100%;
@@ -243,8 +247,17 @@ footer{
     float: right;
 }
 
+.match_score #game_player1_team_logo{
+    margin-left: 6%;
+}
+
+.match_score #home{
+    float: right;
+    margin-right: 9%;
+}
+
 .match_score .score{
-    width: 23%;
+    width: 30%;
     text-align: center;
     height: 70px;
     font-size: 40px;
