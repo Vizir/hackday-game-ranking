@@ -2,7 +2,7 @@
   .comment-block
     %a{:href => "/profiles/#{comment.player.username}"}
       = gravatar_image_tag(comment.player.email, :alt => comment.player.name, :gravatar => { :size => 22 })
-      = ("@#{comment.player.username}")
+      = ("@#{comment.player.username}:")
     .comment-text
       = raw parse_timeline_message(comment.comment)
       = "há #{time_ago_in_words(comment.created_at)}"
