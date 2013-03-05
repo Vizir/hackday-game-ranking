@@ -135,10 +135,6 @@ footer{
     display:block;
 }
 
-header h1{
-    display:none;
-}
-
 #novo-ranking{
     font-size: 30px;
     font-weight:bold;
@@ -147,6 +143,9 @@ header h1{
     width:38px;
     padding:2px 0px 0px 0px;
     text-align:center;
+}
+#landing-page{
+    display: none;
 }
 
 /*************************************************************MODAL CRIA NOVO JOGO*/
@@ -192,7 +191,6 @@ header h1{
 }
 
 #modal [type='submit']{
-    position:absolute;
     font-size: 18px;
     color: #fff;
     border-radius: 2px;
@@ -208,8 +206,7 @@ header h1{
 
 #modal #submit-resultado{
     top:245px;
-    right:30px;
-    width:550px;
+    width:100%;
 }
 
 .match_data{
@@ -218,7 +215,7 @@ header h1{
     height: 115px;
 }
 .match_data input{
-    width: 230px;
+    width: 150px;
     height: 40px;
     padding: 0px 10px 0px 10px;
     margin-bottom: 10px;
@@ -238,16 +235,12 @@ header h1{
 
 .match_score .home{
     width: 50%;
-    float: le;
+    float: left;
 }
 
 .match_score .away{
     width: 50%;
     float: right;
-}
-
-.match_score .home .team_logo{
-    margin-left: 90px;
 }
 
 .match_score .score{
@@ -265,6 +258,8 @@ header h1{
     background-image: -moz-linear-gradient(bottom, rgb(49,101,143) 37%, rgb(64,116,161) 69%, rgb(65,122,168) 85%);
     background-image: -webkit-linear-gradient(bottom, rgb(49,101,143) 37%, rgb(64,116,161) 69%, rgb(65,122,168) 85%);
     background-image: -ms-linear-gradient(bottom, rgb(49,101,143) 37%, rgb(64,116,161) 69%, rgb(65,122,168) 85%);
+    position: relative;
+    top: 7px;
 }
 
 #goto-ranking{

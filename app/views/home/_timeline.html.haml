@@ -6,7 +6,7 @@
         %p
           = raw parse_timeline_message(t.message)
           %span
-            = "#{time_ago_in_words(t.created_at)} atrás"
+            = "há #{time_ago_in_words(t.created_at)}"
         .comments-block
           = render '/comments/comments', comments: t.comments
           - if !current_player.nil?

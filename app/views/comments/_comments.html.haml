@@ -5,4 +5,4 @@
       = ("@#{comment.player.username}")
     .comment-text
       = raw parse_timeline_message(comment.comment)
-      = "há #{time_ago_in_words(comment.created_at)} atrás"
+      = "há #{time_ago_in_words(comment.created_at)}"

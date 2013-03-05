@@ -147,7 +147,7 @@
       /%a#novo-ranking{:href => ""} Novo Ranking
       - if current_player.nil?
         = link_to('Entrar', new_player_session_path, :class=>'btn-sair')
-        = link_to('Quer um ranking deste?', "http://fifa-ranking.kickoffpages.com/", :class=>'btn-sair', :target => "_blank")
+        = link_to('Quer um ranking deste?', "http://fifa-ranking.kickoffpages.com/", :class=>'btn-sair', :target => "_blank", :id => "landing-page")
       - else
         = link_to('Sair', destroy_player_session_path, :method => :delete, :class=>'btn-sair')
     #wrapper

@@ -261,9 +261,15 @@ input[type="number"] {
     margin-bottom:3px;
 }
 
+.comment-block a{
+    position:relative;
+    top:-5px;    
+}
+
 .comment-text{
     position:relative;
     top:-5px;
+    display: inline;
 }
 
 .comment-show{
