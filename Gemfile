@@ -47,3 +47,5 @@ gem 'acts_as_commentable', '3.0.1'
 gem 'gravatar_image_tag'
 
 gem 'activerecord-mysql-adapter'
+
+gem 'social-share-button'

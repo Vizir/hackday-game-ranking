@@ -13,97 +13,106 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     :javascript
       $(document).ready(function() {
+        var mobile_active_view = '';
+        if(window.location.href.indexOf('timeline') > 0){
+          mobile_active_view = 'timeline';
+          $('#ranking').fadeOut();
+          $('#timeline').fadeIn();
+        } else {
+          $('#timeline').fadeOut();
+          $('#ranking').fadeIn();
+          mobile_active_view = 'ranking';
+        }
 
-        var mobile_active_view = 'ranking';
         var windowHeight = $(window).height();
         var headerHeight = $('header').height();
         var footerHeight = $('footer').height();
 
-          if($(window).width() <= 1024){
-              $("#novo-ranking").html("+");
+        if($(window).width() <= 1024){
+            $("#novo-ranking").html("+");
+        } else {
+            $("#novo-ranking").html("Novo Ranking");
+        }
+
+        $('#goto-ranking').click(function(){
+          $('#timeline').fadeOut();
+          $('#ranking').fadeIn();
+          mobile_active_view = 'ranking';
+          return false;
+        })
+
+        $('#goto-timeline').click(function(){
+          $('#ranking').fadeOut();
+          $('#timeline').fadeIn();
+          mobile_active_view = 'timeline';
+          return false;
+        })
+
+        $('.nova-partida').click(function(){
+          var $this = $(this).parents('.ranking-row');
+          $('#jogador-visitante').val($this.find('#username').text());
+          $('#jogador-visitante-id').val($this.prop('id'));
+
+          $('#modal-bg').fadeIn('fast');
+
+          $.ajax({
+            url: 'teams/get_new_score_data/' + #{current_player.try(:id)} + '/' + $this.prop('id'),
+            success: function(data){
+
+              if(data.last_team_player1 != null){
+                $('#time-casa').val(data.last_team_player1.name);
+                $("#game_player1_team_logo").attr('src', data.last_team_player1.logo)
+                $('#game_player1_team_id').val(data.last_team_player1.id);
+              }
+              if(data.last_team_player2 != null){
+                $('#time-visitante').val(data.last_team_player2.name);
+                $("#game_player2_team_logo").attr('src', data.last_team_player2.logo)
+                $('#game_player2_team_id').val(data.last_team_player2.id);
+              }
+              set_team_autocomplete(data.all_teams);
+
+              setTimeout("$('#modal').fadeIn('fast')", 300)
+
+              if($(window).width() <= 1024){
+                setTimeout("$('header, footer, #wrapper').hide(); $('#modal-bg').fadeOut('fast');", 300);
+              } else {
+                $('#modal-bg').fadeIn('fast')
+              }
+            },
+            error: function(){
+              alert("Erro ao carregar os times");
+            }
+          });
+          return false;
+        })
+
+        $('#close').click(function(){
+          $('#modal').fadeOut('fast')
+          $('#modal-bg').fadeOut('fast', function(){
+            if($(window).width() <= 1024){
+              $('header, footer, #wrapper').fadeIn('fast');
+            } else {
+              $('header, footer, #wrapper').fadeIn('fast');
+            }
+          })
+          return false;
+        })
+
+        $(window).resize(function() {
+          if($(window).width() <= 1024 && mobile_active_view == 'ranking'){
+              $('#timeline').fadeOut()
           } else {
               $("#novo-ranking").html("Novo Ranking");
+              $('#ranking').fadeIn('fast');
+              $('#timeline').fadeIn('fast');
           }
+        });
 
-          $('#goto-ranking').click(function(){
-            $('#timeline').fadeOut();
-            $('#ranking').fadeIn();
-            mobile_active_view = 'ranking';
-            return false;
-          })
-
-          $('#goto-timeline').click(function(){
-            $('#ranking').fadeOut();
-            $('#timeline').fadeIn();
-            mobile_active_view = 'timeline';
-            return false;
-          })
-
-          $('.nova-partida').click(function(){
-              var $this = $(this).parents('.ranking-row');
-              $('#jogador-visitante').val($this.find('#username').text());
-              $('#jogador-visitante-id').val($this.prop('id'));
-
-              $('#modal-bg').fadeIn('fast');
-
-              $.ajax({
-                url: 'teams/get_new_score_data/' + #{current_player.try(:id)} + '/' + $this.prop('id'),
-                success: function(data){
-
-                  if(data.last_team_player1 != null){
-                    $('#time-casa').val(data.last_team_player1.name);
-                    $("#game_player1_team_logo").attr('src', data.last_team_player1.logo)
-                    $('#game_player1_team_id').val(data.last_team_player1.id);
-                  }
-                  if(data.last_team_player2 != null){
-                    $('#time-visitante').val(data.last_team_player2.name);
-                    $("#game_player2_team_logo").attr('src', data.last_team_player2.logo)
-                    $('#game_player2_team_id').val(data.last_team_player2.id);
-                  }
-                  set_team_autocomplete(data.all_teams);
-
-                  setTimeout("$('#modal').fadeIn('fast')", 300)
-
-                  if($(window).width() <= 1024){
-                    setTimeout("$('header, footer, #wrapper').hide(); $('#modal-bg').fadeOut('fast');", 300);
-                  } else {
-                    $('#modal-bg').fadeIn('fast')
-                  }
-                },
-                error: function(){
-                  alert("Erro ao carregar os times");
-                }
-              });
-              return false;
-          })
-
-          $('#close').click(function(){
-              $('#modal').fadeOut('fast')
-              $('#modal-bg').fadeOut('fast', function(){
-              if($(window).width() <= 1024){
-                $('header, footer, #wrapper').fadeIn('fast');
-              } else {
-                $('header, footer, #wrapper').fadeIn('fast');
-              }
-              })
-              return false;
-          })
-
-          $(window).resize(function() {
-              if($(window).width() <= 1024 && mobile_active_view = 'ranking'){
-                  $('#timeline').fadeOut()
-              } else {
-                  $("#novo-ranking").html("Novo Ranking");
-                  $('#ranking').fadeIn('fast');
-                  $('#timeline').fadeIn('fast');
-              }
-          });
-
-          // no Android, troca pra type=number pra mostrar teclado numerico.
-          // (desculpa pela detecacao de user agent :)
-          if (navigator.userAgent.indexOf('Android') >= 0) {
-            $('.input-numerico').attr('type', 'number');
-          }
+        // no Android, troca pra type=number pra mostrar teclado numerico.
+        // (desculpa pela detecacao de user agent :)
+        if (navigator.userAgent.indexOf('Android') >= 0) {
+          $('.input-numerico').attr('type', 'number');
+        }
         $(".input-numerico, .team_autocomplete").focus(function(){
           this.select();
         });

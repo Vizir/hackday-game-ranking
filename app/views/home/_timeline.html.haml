@@ -2,14 +2,4 @@
 #timeline.block
   %ul
     - @timeline.each do |t|   
-      %li
-        %p
-          = raw parse_timeline_message(t.message)
-          %span
-            = "há #{time_ago_in_words(t.created_at)}"
-        .comments-block
-          = render '/comments/comments', comments: t.comments
-          - if !current_player.nil?
-            %a.comment-show{href: 'javascript:void(0);'} Comentar
-          .comments-area
-            = render '/comments/form', timeline_id: t.id
+      = render "timeline_item", :t => t

@@ -1,0 +1,11 @@
+= render 'ranking'
+= render 'timeline'
+
+:javascript
+  $(document).ready(function(){
+    $('#ranking').fadeOut();
+    $('#timeline').fadeIn();
+    $('#goto-timeline').click(function(){
+      window.location = "/#timeline";
+    });
+  });

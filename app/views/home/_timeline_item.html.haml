@@ -1,0 +1,14 @@
+%li
+  %p
+    = raw parse_timeline_message(t.message)
+    %span
+      = link_to "há #{time_ago_in_words(t.created_at)}", "timeline/#{t.id}"
+    .share
+      Compartilhar: 
+      = social_share_button_tag(t.message, :url => "#{root_url}timeline/#{t.id}")
+  .comments-block
+    = render '/comments/comments', comments: t.comments
+    - if !current_player.nil?
+      %a.comment-show{href: 'javascript:void(0);'} Comentar
+    .comments-area
+      = render '/comments/form', timeline_id: t.id

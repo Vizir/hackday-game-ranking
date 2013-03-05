@@ -10,6 +10,10 @@ class HomeController < ApplicationController
     @timeline = Timeline.where(:league_id => league).order('created_at desc')
   end
 
-
+  def show_timeline_item
+    index
+    @timeline = [Timeline.find(params[:id])]
+    render "timeline"
+  end
 
 end
