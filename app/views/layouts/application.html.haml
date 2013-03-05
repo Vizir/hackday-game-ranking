@@ -14,11 +14,11 @@
     :javascript
       $(document).ready(function() {
         var mobile_active_view = '';
-        if(window.location.href.indexOf('timeline') > 0){
+        if(window.location.href.indexOf('timeline') > 0 && $(window).width() <= 1024){
           mobile_active_view = 'timeline';
           $('#ranking').fadeOut();
           $('#timeline').fadeIn();
-        } else {
+        } else if($(window).width() <= 1024){
           $('#timeline').fadeOut();
           $('#ranking').fadeIn();
           mobile_active_view = 'ranking';

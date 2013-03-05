@@ -167,13 +167,13 @@ footer{
 
 #modal .home img.team_logo{
     float: left;
-    width: 85px;
+    width: 75px;
 }
 
 #modal .away img.team_logo{
     margin-left: 5px;
     float: rigth;
-    width: 85px;
+    width: 75px;
 }
 
 #modal-bg{
@@ -215,7 +215,7 @@ footer{
     height: 115px;
 }
 .match_data input{
-    width: 150px;
+    width: 131px;
     height: 40px;
     padding: 0px 10px 0px 10px;
     margin-bottom: 10px;
@@ -259,7 +259,6 @@ footer{
     background-image: -webkit-linear-gradient(bottom, rgb(49,101,143) 37%, rgb(64,116,161) 69%, rgb(65,122,168) 85%);
     background-image: -ms-linear-gradient(bottom, rgb(49,101,143) 37%, rgb(64,116,161) 69%, rgb(65,122,168) 85%);
     position: relative;
-    top: 7px;
 }
 
 #goto-ranking{
