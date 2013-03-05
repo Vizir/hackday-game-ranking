@@ -3,8 +3,10 @@
 
 :javascript
   $(document).ready(function(){
-    $('#ranking').fadeOut();
-    $('#timeline').fadeIn();
+    if($(window).width() <= 1024){
+      $('#ranking').fadeOut();
+      $('#timeline').fadeIn();
+    }
     $('#goto-timeline').click(function(){
       window.location = "/#timeline";
     });
