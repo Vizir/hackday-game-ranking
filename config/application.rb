@@ -66,5 +66,6 @@ module HackdayGameRanking
       g.template_engine     :haml
       g.test_framework      :rspec
     end
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
   end
 end
