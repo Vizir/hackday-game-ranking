@@ -29,6 +29,7 @@
 <!-- A section abaixo só aparece quando um usuário logado entra no perfil de outro usuário. -->
 -if !current_player.nil?
   -if(current_player.id != @p.id)
+    %h3 Últimos jogos contra mim
     .last-games.challenges
       %ul
         -@p.games_with_me(current_player.id)[0..5].each do |game|
@@ -36,6 +37,7 @@
 
 
 .last-games
+  %h3 Últimos jogos desse jogador
   %ul
     -@p.games[0..5].each do |game|
       =render :partial => 'challenge', :locals => {:game => game}
