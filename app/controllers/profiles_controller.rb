@@ -7,7 +7,6 @@ class ProfilesController < ApplicationController
 
   def show
     @p = Player.where(:username => params[:player_name]).first
-    #puts @p.inspect
 
     @ranking = @p.rankings
     @victorys = count_victorys @p

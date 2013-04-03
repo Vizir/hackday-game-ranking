@@ -24,11 +24,11 @@ class Player < ActiveRecord::Base
   end
 
   def games
-    Game.where("player1_id = ? or player2_id = ?",self.id,self.id).all
+    Game.where("player1_id = ? or player2_id = ?",self.id,self.id).order('id desc').all
   end
 
   def games_with_me(player_id)
-    Game.where("(player1_id = ? or player2_id = ?) and (player1_id = ? or player2_id = ?)",self.id,self.id,player_id, player_id).all
+    Game.where("(player1_id = ? or player2_id = ?) and (player1_id = ? or player2_id = ?)",self.id,self.id,player_id, player_id).order('id desc').all
   end
 
   def most_used_team

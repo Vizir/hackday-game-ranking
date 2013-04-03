@@ -31,11 +31,11 @@
   -if(current_player.id != @p.id)
     .last-games.challenges
       %ul
-        -@p.games_with_me(current_player.id)[0..4].each do |game|
+        -@p.games_with_me(current_player.id)[0..5].each do |game|
           =render :partial => 'challenge', :locals => {:game => game}
 
 
 .last-games
   %ul
-    -@p.games[0..4].each do |game|
+    -@p.games[0..5].each do |game|
       =render :partial => 'challenge', :locals => {:game => game}
