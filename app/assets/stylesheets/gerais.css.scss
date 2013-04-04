@@ -63,12 +63,9 @@ header{
     box-shadow: 0px 0px 0px 1px black;
 }
 
-header h1{
-    position:relative;
-    margin:0 auto;
-    text-align:center;
-    color:#fff;
-    font-size:20px;
+header h1 {
+  float: left;
+  margin:0;
 }
 
 #wrapper{
@@ -126,26 +123,12 @@ footer{
 }
 
 #logo{
-    position:absolute;
-    display:block;
-    width:50px;
-    height:50px;
-    background:url(logo.png) 4px 4px no-repeat;
-    background-size:42px 42px;
-    left:2px;
-    text-decoration:none !important;
-    text-indent: -99999px;
-}
-
-
-#logo span{
-    color:#fff;
-    position:absolute;
-    left:48px;
-    top:10px;
-    line-height:17px;
-    font-size:17px;
-    letter-spacing:1px;
+  float: left;
+  width: 50px;
+  height: 50px;
+  background: url(logo.png) 4px 4px no-repeat;
+  background-size: 42px 42px;
+  text-indent: -99999px;
 }
 
 #novo-ranking{
@@ -207,8 +190,9 @@ footer{
 }
 
 .btn-sair{
-    @include btnStyle();
-    font-weight:bold;
+  @include btnStyle();
+  font-weight:bold;
+  margin: 5px;
 }
 
 input[type="text"],
@@ -291,7 +275,7 @@ input[type="number"] {
 }
 
 .comments-block input[type="submit"]{
-    @include btnStyle();
+    @include 'btnStyle();
     position:relative;
     font-size:14px;
     padding:5px 10px;
