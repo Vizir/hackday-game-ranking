@@ -31,11 +31,17 @@
       %h3 Últimos jogos contra mim
       %ul
         -@p.games_with_me(current_player.id)[0..5].each do |game|
-          =render :partial => 'challenge', :locals => {:game => game}
+          =render partial: 'challenge', locals: { game: game }
 
 
 .last-games
   %h3 Últimos jogos desse jogador
   %ul
     -@p.games[0..5].each do |game|
-      =render :partial => 'challenge', :locals => {:game => game}
+      =render partial: 'challenge', locals: { game: game }
+
+.greatest_defeat.clear
+  %h3 Maiores derrotas
+  %ul
+    -@p.greatest_defeat[0..5].each do |game|
+      =render partial: 'challenge', locals: { game: game }

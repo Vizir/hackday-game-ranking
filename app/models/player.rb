@@ -37,4 +37,9 @@ class Player < ActiveRecord::Base
     mysql_res.first[0]
     Team.find(mysql_res.first[0])
   end
+
+  def greatest_defeat
+    Game.where("(player1_id = #{self.id} and player1_score<player2_score) or (player2_id = #{self.id} and player2_score<player1_score)").order('IF(player1_score > player2_score, player1_score-player2_score, player2_score-player1_score) DESC').order('IF(player1_score > player2_score, player1_score, player2_score) DESC')
+  end
+
 end
