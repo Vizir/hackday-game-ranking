@@ -275,7 +275,7 @@ input[type="number"] {
 }
 
 .comments-block input[type="submit"]{
-    @include 'btnStyle();
+    @include btnStyle();
     position:relative;
     font-size:14px;
     padding:5px 10px;
